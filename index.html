@@ -460,7 +460,7 @@
           <span class="num">03</span>
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></div>
           <h3>Security and maintenance</h3>
-          <p>The i.MX95 supports <span class="hl">secure boot</span> and lets MSD move the product to a maintained Linux BSP.</p>
+          <p>The move gives MSD an opportunity to establish a <span class="hl">long-term Linux update path</span>, subject to confirming BSP support with ADLINK.</p>
           <div class="srcs"><a class="src" href="https://www.adlinktech.com/products/computer_on_modules/smarc/lec-imx95" target="_blank" rel="noopener">LEC-iMX95</a><a class="src" href="https://www.nxp.com/docs/en/user-guide/UG10165.pdf" target="_blank" rel="noopener">NXP i.MX Linux porting</a></div>
         </div>
         <div class="rc r" style="--d:.5s">
@@ -543,7 +543,7 @@
           </thead>
           <tbody>
             <tr><td class="ms">A, Keep LEC-iMX6</td><td class="mo2">No project now</td><td class="md">Full reuse, no change</td><td class="md">Supply, capacity and security stay unaddressed; a later migration may be forced and rushed.</td></tr>
-            <tr><td class="ms">B, Upgrade to LEC-iMX95<span class="pf2">Chosen</span></td><td class="mo2">~10 months (my estimate)</td><td class="md">High intended: same SMARC form factor; enclosure, IP67 and I/O reuse targeted, confirmed at M1</td><td class="md">Assumes enclosure reuse and at most one carrier design cycle; a second carrier spin adds ~6 to 8 weeks (my estimate).</td></tr>
+            <tr><td class="ms">B, Upgrade to LEC-iMX95<span class="pf2">Chosen</span></td><td class="mo2">~10 months (my estimate)</td><td class="md">Same SMARC form factor. Carrier and enclosure reuse assessed at M1. Early IP67 evidence reviewed by M2.</td><td class="md">Assumes enclosure reuse and at most one carrier design cycle; a second carrier spin adds ~6 to 8 weeks (my estimate).</td></tr>
             <tr><td class="ms">C, Different vendor module</td><td class="mo2">~12 to 15 months (my estimate)</td><td class="md">Medium: new module, carrier rework, new supplier</td><td class="md">New supplier qualification and BSP relationship; more integration risk for little gain over B.</td></tr>
             <tr><td class="ms">D, Full custom redesign</td><td class="mo2">~18+ months (my estimate)</td><td class="md">Low: new carrier, possibly a new enclosure</td><td class="md">Longest schedule, highest technical and compliance risk and cost; conflicts with time-to-market.</td></tr>
           </tbody>
@@ -589,7 +589,7 @@
         <div class="study-body">
           <p><b>Activities leading to M4.5.</b> Carrier design, prototype build and BSP bring-up all run between M1 and M4.5 on the hardware track, in parallel with software on the evaluation kit. They are the work behind the first offline event, not separate milestones.</p>
           <p><b>Who validates it.</b> Hardware owns the carrier compatibility review; Mechanical and QA own the early IP67 check; Engineering and Compliance own the EMC, safety and IP67 retest scope; Procurement owns the module lifecycle and lead-time check. The planning number stays mine as a target, not a commitment.</p>
-          <p><b>When.</b> The compatibility review completes around M1, IP67 is verified by M2, and the retest scope is confirmed by DVT (M7.5).</p>
+          <p><b>When.</b> At M1 we agree the hardware changes and initial retest scope. By M2 we review early IP67 evidence and record any gaps. At DVT we confirm coverage of the final configuration.</p>
           <p><b>What triggers a schedule revision.</b> A needed second carrier design cycle adds roughly 6 to 8 weeks. If the enclosure must change, the schedule updates with the scope of that change.</p>
         </div>
       </details>
