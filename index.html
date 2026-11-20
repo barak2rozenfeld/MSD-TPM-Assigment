@@ -140,7 +140,7 @@
   .shead{display:flex;flex-direction:column;gap:12px;margin-bottom:2.6vh}
 
   /* ---------- Slide 2 : reasons ---------- */
-  .reasons{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;flex:1;align-content:center}
+  .reasons{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;flex:1;align-content:center}
   .rc{background:var(--card);border:1px solid var(--card-brd);border-radius:20px;padding:26px 24px;position:relative;overflow:hidden;backdrop-filter:blur(10px);display:flex;flex-direction:column;gap:14px}
   .rc::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--teal),var(--teal-bright))}
   .rc .num{font-size:14px;font-weight:800;color:var(--teal-bright);letter-spacing:.1em}
@@ -463,6 +463,13 @@
           <p>The i.MX95 supports <span class="hl">secure boot</span> and lets MSD move the product to a maintained Linux BSP.</p>
           <div class="srcs"><a class="src" href="https://www.adlinktech.com/products/computer_on_modules/smarc/lec-imx95" target="_blank" rel="noopener">LEC-iMX95</a><a class="src" href="https://www.nxp.com/docs/en/user-guide/UG10165.pdf" target="_blank" rel="noopener">NXP i.MX Linux porting</a></div>
         </div>
+        <div class="rc r" style="--d:.5s">
+          <span class="num">04</span>
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.6 4L18 8.6l-4 1.6L12 15l-1.6-4.8L6 8.6l4.4-1.6z"/><path d="M18.5 14l.9 2.3 2.3.9-2.3.9-.9 2.3-.9-2.3-2.3-.9 2.3-.9z"/></svg></div>
+          <h3>AI capabilities</h3>
+          <p>Beyond capacity, the i.MX95 adds a dedicated <span class="hl">NPU</span>, opening the door to on-device AI for animal monitoring with no cloud dependency.</p>
+          <div class="srcs"><a class="src" href="https://www.adlinktech.com/products/computer_on_modules/smarc/lec-imx95" target="_blank" rel="noopener">LEC-iMX95</a><a class="src" href="https://www.adlinktech.com/en/news/nxp-imx-95-smarc-osm-modules" target="_blank" rel="noopener">ADLINK i.MX95 launch</a></div>
+        </div>
       </div>
       <details class="study r" style="--d:.5s">
         <summary>Reasoning and evidence</summary>
@@ -470,6 +477,7 @@
           <p><b>Supply continuity.</b> If a gateway fails on a farm several years after installation, MSD still has to supply a replacement, so long-term module availability is an operational concern, not just a procurement detail. ADLINK publishes a 15-year product lifecycle for the new module. Before committing, I would ask Procurement to verify availability, lead times and lifecycle dates for our exact module configuration.</p>
           <p><b>Local processing capacity.</b> While the internet is disconnected, the gateway keeps receiving sensor events, writing them to the local database and serving a farmer who opens the web app. Those workloads compete for CPU and memory. To validate the benefit I would replay the same workload on both generations and measure throughput, missing events and web response time. Larger herds are a growth scenario; current numbers are unknown.</p>
           <p><b>Security and maintenance.</b> Secure boot means the device can verify that the software it starts is trusted. Moving to a maintained Linux BSP is a separate lifecycle decision: I would confirm with ADLINK which BSP release it supports, who provides security fixes, and for how long. Hardware support for secure boot and ongoing Linux maintenance are separate considerations.</p>
+          <p><b>AI capabilities.</b> The i.MX95 includes a dedicated neural processing unit, which makes on-device inference such as image-based animal monitoring feasible without sending data to the cloud. I would treat this as a growth capability, not a first-release commitment: I would define one concrete use case with the product team and benchmark it on the evaluation kit before sizing any AI work.</p>
           <div class="qa">
             <span class="q">If the current system already works offline, what does the upgrade buy us?</span>
             Offline operation is already a requirement the current product meets, so the upgrade does not add it. The gain is capacity to process more data locally while preserving the farmer's experience.
@@ -484,11 +492,18 @@
         <h2 class="r" style="--d:.08s">Minimum change to run today's product on <span class="grad">i.MX95</span></h2>
       </div>
 
-      <div class="whyline r" style="--d:.14s"><b>The decision that drives the project:</b> which carrier and enclosure changes are needed to run the existing product on the i.MX95? Hardware checks the pins in use, power and heat dissipation. In parallel, software runs the server, database and app on the evaluation kit.</div>
+      <div class="r" style="--d:.12s;font-size:13.5px;color:var(--muted);margin-top:4px">I weighed four approaches against MSD's time-to-market priority. <b style="color:#fff">My choice: upgrade within the SMARC family to the i.MX95</b>, which reuses the enclosure and I/O and changes only what the new module requires. <span class="src nolink">Scope: MSD brief</span></div>
+
+      <div class="optrow r" style="--d:.2s;grid-template-columns:repeat(4,1fr)">
+        <div class="optmini"><div class="ot">Option A <span class="v" style="color:#E8604C">Defers risk</span></div><h4>Keep LEC-iMX6</h4><p>No project now, but supply, capacity and security stay unaddressed.</p></div>
+        <div class="optmini chosen"><div class="ot">Option B <span class="v">Chosen</span></div><h4>Upgrade to LEC-iMX95</h4><p>Same SMARC form factor: reuse the enclosure and I/O, change only what the module requires.</p></div>
+        <div class="optmini"><div class="ot">Option C <span class="v" style="color:#E8604C">More rework</span></div><h4>Different vendor module</h4><p>New supplier qualification and BSP for little gain over staying in SMARC.</p></div>
+        <div class="optmini"><div class="ot">Option D <span class="v" style="color:#E8604C">Highest risk</span></div><h4>Full custom redesign</h4><p>Maximum optimization but the longest schedule, against the time-to-market priority.</p></div>
+      </div>
 
       <div class="deltas r" style="--d:.26s">
         <div class="delta">
-          <div class="dlabel">R&amp;D delta</div>
+          <div class="dlabel">Chosen approach, R&amp;D delta</div>
           <ul class="ticks">
             <li><span class="tk"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Verify carrier compatibility</b> and redesign only the affected circuits</span></li>
             <li><span class="tk"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>BSP / Yocto bring-up</b> and migration of the drivers this product actually uses (Ethernet, storage, USB and the sensor interfaces)</span></li>
@@ -497,7 +512,7 @@
           </ul>
         </div>
         <div class="delta">
-          <div class="dlabel">NPI delta</div>
+          <div class="dlabel">Chosen approach, NPI delta</div>
           <ul class="ticks">
             <li><span class="tk"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>EVT, DVT, PVT</b> builds on the new carrier</span></li>
             <li><span class="tk"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Engineering and Compliance <b>agree the EMC, safety and IP67 retest scope</b> after reviewing the changes</span></li>
@@ -513,6 +528,23 @@
         <div class="study-body">
           <p><b>Verify, then redesign.</b> Committing to a full carrier re-spin before checking pin mapping, power and thermal compatibility risks redesigning circuits that did not need to change. I size the carrier work only after the compatibility review, so the schedule reflects the real change set rather than a worst case.</p>
           <p><b>Why compare against two references.</b> Comparing the new unit only to the existing device can hide a fault that both share. Comparing it to a known expected outcome as well catches a defect that is common to both generations, so the offline replay proves correctness, not just that the two behave the same.</p>
+        </div>
+      </details>
+
+      <details class="study r" style="--d:.46s">
+        <summary>Appendix: options compared (time, compatibility, risk)</summary>
+        <div class="mwrap">
+        <table class="mtable">
+          <thead>
+            <tr><th>Option</th><th>Rough time</th><th>Compatibility and reuse</th><th>Key risks</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="ms">A, Keep LEC-iMX6</td><td class="mo2">No project now</td><td class="md">Full reuse, no change</td><td class="md">Supply, capacity and security stay unaddressed; a later migration may be forced and rushed.</td></tr>
+            <tr><td class="ms">B, Upgrade to LEC-iMX95<span class="pf2">Chosen</span></td><td class="mo2">~10 months (my estimate)</td><td class="md">High: same SMARC form factor, reuse of the enclosure, IP67 and I/O concept</td><td class="md">Assumes one carrier design cycle; a second board spin adds ~6 to 8 weeks (my estimate).</td></tr>
+            <tr><td class="ms">C, Different vendor module</td><td class="mo2">~12 to 15 months (my estimate)</td><td class="md">Medium: new module, carrier rework, new supplier</td><td class="md">New supplier qualification and BSP relationship; more integration risk for little gain over B.</td></tr>
+            <tr><td class="ms">D, Full custom redesign</td><td class="mo2">~18+ months (my estimate)</td><td class="md">Low: new carrier, possibly a new enclosure</td><td class="md">Longest schedule, highest technical and compliance risk and cost; conflicts with time-to-market.</td></tr>
+          </tbody>
+        </table>
         </div>
       </details>
     </section>
