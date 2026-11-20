@@ -152,16 +152,19 @@
   .rc .spec{font-family:var(--mono);font-size:11px;letter-spacing:.01em;color:#BFEEE8;background:rgba(27,201,182,.1);border:1px solid var(--card-brd);padding:5px 9px;border-radius:7px;line-height:1.4}
   .rc .to{margin-top:auto;font-size:12px;color:#FFD9A8;border-left:2px solid var(--warn);padding:2px 0 2px 10px;line-height:1.4}
   .rc .to b{color:#fff}
-  /* slide-2 future-opportunity slim strip (lighter weight than the 3 numbered reasons) */
-  .reasons .rc.future{grid-column:1 / -1;flex-direction:row;align-items:center;gap:16px;padding:13px 20px;background:rgba(242,163,60,.06);border:1px dashed rgba(242,163,60,.42);backdrop-filter:none}
-  .rc.future::before{display:none}
-  .rc.future .ic{width:38px;height:38px;flex:0 0 auto;background:rgba(242,163,60,.14);border-radius:11px}
-  .rc.future .ic svg{width:20px;height:20px;stroke:#F2A33C}
-  .rc.future .fc{display:flex;flex-direction:column;gap:3px;flex:1;min-width:0}
-  .rc.future .num{color:#F2A33C;font-size:10.5px;text-transform:uppercase}
-  .rc.future h3{font-size:16px;line-height:1.1}
-  .rc.future p{font-size:13px;line-height:1.4}
-  .rc.future .srcs{flex:0 0 auto;margin-top:0}
+  /* slide-2 AI card: same shape as the three reasons, amber-coded so colour shows it is a future opportunity, not a core reason */
+  .reasons .rc.future{background:linear-gradient(180deg,rgba(242,163,60,.08),var(--card));border-color:rgba(242,163,60,.34)}
+  .rc.future::before{background:var(--warn)}
+  .rc.future .ic{background:rgba(242,163,60,.14)}
+  .rc.future .ic svg{stroke:#F2A33C}
+  .rc.future .num{align-self:flex-start;color:#F2A33C;background:rgba(242,163,60,.14);border:1px solid rgba(242,163,60,.36);padding:3px 10px;border-radius:999px;font-size:10px;text-transform:uppercase;letter-spacing:.07em}
+  .rc.future .hl{color:#FFE2B3}
+  /* colour key for the reason cards */
+  .rlegend{display:flex;gap:20px;flex-wrap:wrap;font-size:11.5px;color:var(--muted);font-weight:600}
+  .rlegend .lk{display:flex;align-items:center;gap:7px}
+  .rlegend .lk i{width:12px;height:12px;border-radius:3px;flex:0 0 auto}
+  .rlegend .lk i.core{background:linear-gradient(90deg,var(--teal),var(--teal-bright))}
+  .rlegend .lk i.fut{background:var(--warn)}
   /* slide-3 trade-off strip */
   .tohead{display:flex;align-items:center;gap:9px;margin:18px 0 10px;font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--warn)}
   .tohead::before{content:"";width:22px;height:2px;background:var(--warn);border-radius:2px}
@@ -356,8 +359,6 @@
     .reasons{grid-template-columns:1fr;gap:15px}
     .rc{padding:20px 18px;gap:11px}
     .rc .ic{width:44px;height:44px}
-    .reasons .rc.future{flex-direction:column;align-items:flex-start;gap:10px;padding:18px}
-    .rc.future .srcs{margin-top:2px}
     .scope{grid-template-columns:1fr;gap:15px}
     .tostrip{grid-template-columns:1fr;gap:11px}
     .appx{grid-template-columns:1fr;gap:0}
@@ -497,6 +498,7 @@
     <section class="slide" id="s2">
       <div class="shead">
         <h2 class="r" style="--d:.1s">Why move from <span class="grad">i.MX6 to i.MX95?</span></h2>
+        <div class="rlegend r" style="--d:.14s"><span class="lk"><i class="core"></i>Core reason for the upgrade</span><span class="lk"><i class="fut"></i>Future opportunity, not required for the first release</span></div>
       </div>
       <div class="reasons">
         <div class="rc r" style="--d:.15s">
@@ -521,12 +523,10 @@
           <div class="srcs"><a class="src" href="https://www.adlinktech.com/products/computer_on_modules/smarc/lec-imx95" target="_blank" rel="noopener">LEC-iMX95</a><a class="src" href="https://www.nxp.com/docs/en/user-guide/UG10165.pdf" target="_blank" rel="noopener">NXP i.MX Linux porting</a></div>
         </div>
         <div class="rc future r" style="--d:.5s">
+          <span class="num">Future opportunity</span>
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.6 4L18 8.6l-4 1.6L12 15l-1.6-4.8L6 8.6l4.4-1.6z"/><path d="M18.5 14l.9 2.3 2.3.9-2.3.9-.9 2.3-.9-2.3-2.3-.9 2.3-.9z"/></svg></div>
-          <div class="fc">
-            <span class="num">Future opportunity</span>
-            <h3>AI capabilities</h3>
-            <p>The i.MX95's dedicated <span class="hl">NPU</span> could accelerate future models that analyze sensor data on the farm.</p>
-          </div>
+          <h3>AI capabilities</h3>
+          <p>The i.MX95's dedicated <span class="hl">NPU</span> could accelerate future models that analyze sensor data on the farm.</p>
           <div class="srcs"><a class="src" href="https://www.adlinktech.com/products/computer_on_modules/smarc/lec-imx95" target="_blank" rel="noopener">LEC-iMX95</a><a class="src" href="https://www.adlinktech.com/en/news/nxp-imx-95-smarc-osm-modules" target="_blank" rel="noopener">ADLINK i.MX95 launch</a></div>
         </div>
       </div>
