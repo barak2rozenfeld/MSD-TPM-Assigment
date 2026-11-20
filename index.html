@@ -467,7 +467,7 @@
           <span class="num">04</span>
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.6 4L18 8.6l-4 1.6L12 15l-1.6-4.8L6 8.6l4.4-1.6z"/><path d="M18.5 14l.9 2.3 2.3.9-2.3.9-.9 2.3-.9-2.3-2.3-.9 2.3-.9z"/></svg></div>
           <h3>AI capabilities</h3>
-          <p>Beyond capacity, the i.MX95 adds a dedicated <span class="hl">NPU</span>, opening the door to on-device AI for animal monitoring with no cloud dependency.</p>
+          <p>The i.MX95's dedicated <span class="hl">NPU</span> could accelerate future models that analyze sensor data on the farm.</p>
           <div class="srcs"><a class="src" href="https://www.adlinktech.com/products/computer_on_modules/smarc/lec-imx95" target="_blank" rel="noopener">LEC-iMX95</a><a class="src" href="https://www.adlinktech.com/en/news/nxp-imx-95-smarc-osm-modules" target="_blank" rel="noopener">ADLINK i.MX95 launch</a></div>
         </div>
       </div>
@@ -477,7 +477,7 @@
           <p><b>Supply continuity.</b> If a gateway fails on a farm several years after installation, MSD still has to supply a replacement, so long-term module availability is an operational concern, not just a procurement detail. ADLINK publishes a 15-year product lifecycle for the new module. Before committing, I would ask Procurement to verify availability, lead times and lifecycle dates for our exact module configuration.</p>
           <p><b>Local processing capacity.</b> While the internet is disconnected, the gateway keeps receiving sensor events, writing them to the local database and serving a farmer who opens the web app. Those workloads compete for CPU and memory. To validate the benefit I would replay the same workload on both generations and measure throughput, missing events and web response time. Larger herds are a growth scenario; current numbers are unknown.</p>
           <p><b>Security and maintenance.</b> Secure boot means the device can verify that the software it starts is trusted. Moving to a maintained Linux BSP is a separate lifecycle decision: I would confirm with ADLINK which BSP release it supports, who provides security fixes, and for how long. Hardware support for secure boot and ongoing Linux maintenance are separate considerations.</p>
-          <p><b>AI capabilities.</b> The i.MX95 includes a dedicated neural processing unit, which makes on-device inference such as image-based animal monitoring feasible without sending data to the cloud. I would treat this as a growth capability, not a first-release commitment: I would define one concrete use case with the product team and benchmark it on the evaluation kit before sizing any AI work.</p>
+          <p><b>AI capabilities.</b> The i.MX95 includes a dedicated neural processing unit that could accelerate future models analysing the farm's sensor and tag data on the device, without sending it to the cloud. I would treat this as a growth capability, not a first-release commitment: I'd benchmark a candidate sensor-data model on the CPU and NPU to see whether the NPU reduces processing time or frees up CPU capacity before sizing any AI work.</p>
           <div class="qa">
             <span class="q">If the current system already works offline, what does the upgrade buy us?</span>
             Offline operation is already a requirement the current product meets, so the upgrade does not add it. The gain is capacity to process more data locally while preserving the farmer's experience.
