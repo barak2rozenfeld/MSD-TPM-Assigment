@@ -183,7 +183,7 @@
   .phases{display:flex;gap:10px;margin-bottom:8px}
   .phase{font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:999px;border:1px solid var(--card-brd);color:var(--muted);background:var(--card)}
   .phase b{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;vertical-align:middle}
-  .timeline{position:relative;display:grid;grid-template-columns:repeat(12,1fr);align-items:center;padding:98px 0 104px;margin-top:6px}
+  .timeline{position:relative;display:grid;grid-template-columns:repeat(10,1fr);align-items:center;padding:98px 0 104px;margin-top:6px}
   .timeline .rail{position:absolute;left:0;right:0;top:50%;height:4px;border-radius:4px;background:rgba(255,255,255,.12);transform:translateY(-50%)}
   .timeline .railfill{position:absolute;left:0;top:50%;height:4px;border-radius:4px;background:linear-gradient(90deg,var(--teal),var(--teal-bright));transform:translateY(-50%);width:0;transition:width 1.6s ease .3s;box-shadow:0 0 16px rgba(27,201,182,.7)}
   .node{position:relative;display:flex;justify-content:center}
@@ -492,11 +492,11 @@
         <h2 class="r" style="--d:.08s">Minimum change to run today's product on <span class="grad">i.MX95</span></h2>
       </div>
 
-      <div class="r" style="--d:.12s;font-size:13.5px;color:var(--muted);margin-top:4px">I weighed four approaches against MSD's time-to-market priority. <b style="color:#fff">My choice: upgrade within the SMARC family to the i.MX95</b>, which reuses the enclosure and I/O and changes only what the new module requires. <span class="src nolink">Scope: MSD brief</span></div>
+      <div class="r" style="--d:.12s;font-size:13.5px;color:var(--muted);margin-top:4px">I weighed four approaches against MSD's time-to-market priority. <b style="color:#fff">My choice: upgrade within the SMARC family to the i.MX95</b>, preserving the product's interfaces and farm behaviour and changing only what the new module requires. At M1 Hardware decides what can be reused and what must change. <span class="src nolink">Scope: MSD brief</span></div>
 
       <div class="optrow r" style="--d:.2s">
         <div class="optmini"><div class="ot">Option A <span class="v" style="color:#E8604C">Defers risk</span></div><h4>Keep LEC-iMX6</h4><p>No project now, but supply, capacity and security stay unaddressed.</p></div>
-        <div class="optmini chosen"><div class="ot">Option B <span class="v">Chosen</span></div><h4>Upgrade to LEC-iMX95</h4><p>Same SMARC form factor: reuse the enclosure and I/O, change only what the module requires.</p></div>
+        <div class="optmini chosen"><div class="ot">Option B <span class="v">Chosen</span></div><h4>Upgrade to LEC-iMX95</h4><p>Stay in the SMARC family and aim to preserve the enclosure and interfaces; Hardware confirms at M1 what can be reused and what must change.</p></div>
         <div class="optmini"><div class="ot">Option C <span class="v" style="color:#E8604C">More rework</span></div><h4>Different vendor module</h4><p>New supplier qualification and BSP for little gain over staying in SMARC.</p></div>
         <div class="optmini"><div class="ot">Option D <span class="v" style="color:#E8604C">Highest risk</span></div><h4>Full custom redesign</h4><p>Maximum optimization but the longest schedule, against the time-to-market priority.</p></div>
       </div>
@@ -508,13 +508,14 @@
             <li><span class="tk"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Verify carrier compatibility</b> and redesign only the affected circuits</span></li>
             <li><span class="tk"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>BSP / Yocto bring-up</b> and migration of the drivers this product actually uses (Ethernet, storage, USB and the sensor interfaces)</span></li>
             <li><span class="tk"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Port the app stack</b> to A55 / 64-bit and validate offline mode</span></li>
-            <li><span class="tk"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Verify power and thermal margins</b> in the existing IP67 enclosure</span></li>
+            <li><span class="tk"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Verify power and thermal margins</b> in the target enclosure</span></li>
+            <li><span class="tk"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Verify IP67 early</b> on a representative enclosure assembly</span></li>
           </ul>
         </div>
         <div class="delta">
           <div class="dlabel">Chosen approach, NPI delta</div>
           <ul class="ticks">
-            <li><span class="tk"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>EVT, DVT, PVT</b> builds on the new carrier</span></li>
+            <li><span class="tk"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>EVT, DVT, PVT</b> builds on the carrier once the M1 changes are agreed</span></li>
             <li><span class="tk"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Engineering and Compliance <b>agree the EMC, safety and IP67 retest scope</b> after reviewing the changes</span></li>
             <li><span class="tk"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Update <b>production test fixtures and eMMC flashing</b></span></li>
             <li><span class="tk"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>BOM and supplier setup</b> for the i.MX95 module and pilot build</span></li>
@@ -528,6 +529,8 @@
         <div class="study-body">
           <p><b>Verify, then redesign.</b> Committing to a full carrier re-spin before checking pin mapping, power and thermal compatibility risks redesigning circuits that did not need to change. I size the carrier work only after the compatibility review, so the schedule reflects the real change set rather than a worst case.</p>
           <p><b>Why compare against two references.</b> Comparing the new unit only to the existing device can hide a fault that both share. Comparing it to a known expected outcome as well catches a defect that is common to both generations, so the offline replay proves correctness, not just that the two behave the same.</p>
+          <p><b>IP67, verified early.</b> Already at M1, Mechanical and QA check whether the seals, connectors, openings or the way the lid closes have changed. The aim is to verify sealing by M2, or earlier if a representative enclosure assembly is available, and this runs in parallel with carrier and software development.</p>
+          <p><b>How the IP67 decision is made.</b> If the mechanical configuration is covered by previous-generation evidence, QA and Compliance record the basis for the decision. If a relevant part changed, we run the appropriate tests on a representative assembly. A water test alone covers only part of the IP67 requirement, which also includes dust; if the early sample covers only part of it, we state what was verified and what stays open for DVT.</p>
         </div>
       </details>
 
@@ -540,7 +543,7 @@
           </thead>
           <tbody>
             <tr><td class="ms">A, Keep LEC-iMX6</td><td class="mo2">No project now</td><td class="md">Full reuse, no change</td><td class="md">Supply, capacity and security stay unaddressed; a later migration may be forced and rushed.</td></tr>
-            <tr><td class="ms">B, Upgrade to LEC-iMX95<span class="pf2">Chosen</span></td><td class="mo2">~10 months (my estimate)</td><td class="md">High: same SMARC form factor, reuse of the enclosure, IP67 and I/O concept</td><td class="md">Assumes one carrier design cycle; a second board spin adds ~6 to 8 weeks (my estimate).</td></tr>
+            <tr><td class="ms">B, Upgrade to LEC-iMX95<span class="pf2">Chosen</span></td><td class="mo2">~10 months (my estimate)</td><td class="md">High intended: same SMARC form factor; enclosure, IP67 and I/O reuse targeted, confirmed at M1</td><td class="md">Assumes enclosure reuse and at most one carrier design cycle; a second carrier spin adds ~6 to 8 weeks (my estimate).</td></tr>
             <tr><td class="ms">C, Different vendor module</td><td class="mo2">~12 to 15 months (my estimate)</td><td class="md">Medium: new module, carrier rework, new supplier</td><td class="md">New supplier qualification and BSP relationship; more integration risk for little gain over B.</td></tr>
             <tr><td class="ms">D, Full custom redesign</td><td class="mo2">~18+ months (my estimate)</td><td class="md">Low: new carrier, possibly a new enclosure</td><td class="md">Longest schedule, highest technical and compliance risk and cost; conflicts with time-to-market.</td></tr>
           </tbody>
@@ -552,7 +555,7 @@
     <!-- ============ SLIDE 4 : roadmap (timeline + milestone detail merged) ============ -->
     <section class="slide" id="s4">
       <div class="shead">
-        <h2 class="r" style="--d:.08s">12 milestones to <span class="grad">ready for sale</span>, about 10 months</h2>
+        <h2 class="r" style="--d:.08s">9 milestones to <span class="grad">release</span> <span style="color:var(--muted);font-weight:400">|</span> Target: 10 months</h2>
       </div>
       <div class="tl-wrap" style="flex:none;justify-content:flex-start;gap:10px">
         <div class="phases r" style="--d:.12s">
@@ -565,52 +568,49 @@
         <div class="timeline r" style="--d:.18s">
           <div class="rail"></div>
           <div class="railfill" id="railfill"></div>
-          <div class="node up"><div class="card"><div class="m">01</div><div class="t">Kickoff and requirements freeze</div><div class="mo">~M0</div></div><div class="pt"></div></div>
-          <div class="node down proof"><div class="card"><div class="m">02</div><div class="t">HW scope decided, SW starts on eval kit</div><div class="mo">~M1</div><div class="pf">Decided</div></div><div class="pt"></div></div>
-          <div class="node up"><div class="card"><div class="m">03</div><div class="t">Carrier schematic and layout</div><div class="mo">~M2</div></div><div class="pt"></div></div>
-          <div class="node down"><div class="card"><div class="m">04</div><div class="t">App runs on the i.MX95 eval kit</div><div class="mo">~M3</div></div><div class="pt"></div></div>
-          <div class="node up"><div class="card"><div class="m">05</div><div class="t">EVT boards and BSP bring-up</div><div class="mo">~M3.5</div></div><div class="pt"></div></div>
-          <div class="node down proof"><div class="card"><div class="m">06</div><div class="t">First offline event on prototype hardware</div><div class="mo">~M4.5</div><div class="pf">Demonstrated</div></div><div class="pt"></div></div>
-          <div class="node up"><div class="card"><div class="m">07</div><div class="t">App port and full offline validation</div><div class="mo">~M5.5</div></div><div class="pt"></div></div>
-          <div class="node down"><div class="card"><div class="m">08</div><div class="t">System integration in enclosure</div><div class="mo">~M6</div></div><div class="pt"></div></div>
-          <div class="node up"><div class="card"><div class="m">09</div><div class="t">DVT: functional, thermal, IP67</div><div class="mo">~M7.5</div></div><div class="pt"></div></div>
-          <div class="node down"><div class="card"><div class="m">10</div><div class="t">Production line and fixtures ready</div><div class="mo">~M8.5</div></div><div class="pt"></div></div>
-          <div class="node up proof"><div class="card"><div class="m">11</div><div class="t">PVT: pilot build to criteria</div><div class="mo">~M9.5</div><div class="pf">Validated in production</div></div><div class="pt"></div></div>
-          <div class="node down"><div class="card"><div class="m">12</div><div class="t">Release, ready for sale (GA)</div><div class="mo">~M10</div></div><div class="pt"></div></div>
+          <div class="node up"><div class="card"><div class="m">M0</div><div class="t">Kickoff and release scope agreed</div><div class="mo">Start</div></div><div class="pt"></div></div>
+          <div class="node down proof"><div class="card"><div class="m">01</div><div class="t">Hardware changes agreed</div><div class="mo">~M1</div><div class="pf">Decided</div></div><div class="pt"></div></div>
+          <div class="node up"><div class="card"><div class="m">02</div><div class="t">Early IP67 verification</div><div class="mo">~M2</div></div><div class="pt"></div></div>
+          <div class="node down"><div class="card"><div class="m">03</div><div class="t">Application stack runs on evaluation kit</div><div class="mo">~M3</div></div><div class="pt"></div></div>
+          <div class="node up proof"><div class="card"><div class="m">04</div><div class="t">First offline event on EVT hardware</div><div class="mo">~M4.5</div><div class="pf">Demonstrated</div></div><div class="pt"></div></div>
+          <div class="node down"><div class="card"><div class="m">05</div><div class="t">Offline workflows verified in enclosure</div><div class="mo">~M6</div></div><div class="pt"></div></div>
+          <div class="node up"><div class="card"><div class="m">06</div><div class="t">DVT passed</div><div class="mo">~M7.5</div></div><div class="pt"></div></div>
+          <div class="node down"><div class="card"><div class="m">07</div><div class="t">Production line ready</div><div class="mo">~M8.5</div></div><div class="pt"></div></div>
+          <div class="node up proof"><div class="card"><div class="m">08</div><div class="t">Pilot build meets acceptance criteria</div><div class="mo">~M9.5</div><div class="pf">Validated in production</div></div><div class="pt"></div></div>
+          <div class="node down"><div class="card"><div class="m">09</div><div class="t">Released for sale</div><div class="mo">~M10</div></div><div class="pt"></div></div>
         </div>
         <div class="tl-end r" style="--d:.28s">
-          <span><b class="big">Two tracks run in parallel from M1:</b> hardware designs and fabricates the carrier while software is validated on the eval kit. They converge at system integration (M6).</span>
+          <span><b class="big">Two tracks run in parallel from M0:</b> hardware runs the compatibility review, carrier design, prototype build and BSP bring-up while software is validated on the evaluation kit. They first converge at the offline event (M4.5).</span>
         </div>
-        <div class="assume r" style="--d:.3s"><span class="estlabel">My planning estimate</span>About <b>10 months</b>, assuming one carrier design cycle and reuse of the existing enclosure. A second board spin would add roughly <b>6 to 8 weeks</b>.</div>
+        <div class="assume r" style="--d:.3s"><span class="estlabel">My planning estimate</span>The <b>M10</b> target assumes enclosure reuse and at most one carrier design cycle. A second carrier spin would add roughly <b>6 to 8 weeks</b>. If the enclosure must change, the schedule updates with the scope of that change.</div>
       </div>
       <details class="study r" style="--d:.32s">
         <summary>How I would validate the 10-month assumption</summary>
         <div class="study-body">
-          <p><b>Who validates it.</b> Hardware owns the carrier compatibility review; Engineering and Compliance own the EMC, safety and IP67 retest scope; Procurement owns the module lifecycle and lead-time check. I keep the planning number owned by me as a target, not a commitment.</p>
-          <p><b>When.</b> The compatibility review completes around M1 to M2, before the carrier layout is committed, and the retest scope is agreed once the design changes are known at DVT.</p>
-          <p><b>What triggers a schedule revision.</b> If the review finds the carrier needs a second design cycle, or that the existing enclosure cannot be reused, I revise the target by roughly 6 to 8 weeks and flag it immediately.</p>
+          <p><b>Activities leading to M4.5.</b> Carrier design, prototype build and BSP bring-up all run between M1 and M4.5 on the hardware track, in parallel with software on the evaluation kit. They are the work behind the first offline event, not separate milestones.</p>
+          <p><b>Who validates it.</b> Hardware owns the carrier compatibility review; Mechanical and QA own the early IP67 check; Engineering and Compliance own the EMC, safety and IP67 retest scope; Procurement owns the module lifecycle and lead-time check. The planning number stays mine as a target, not a commitment.</p>
+          <p><b>When.</b> The compatibility review completes around M1, IP67 is verified by M2, and the retest scope is confirmed by DVT (M7.5).</p>
+          <p><b>What triggers a schedule revision.</b> A needed second carrier design cycle adds roughly 6 to 8 weeks. If the enclosure must change, the schedule updates with the scope of that change.</p>
         </div>
       </details>
       <details class="study r" style="--d:.34s">
-        <summary>12-milestone detail: what each milestone proves</summary>
+        <summary>9-milestone detail: what each milestone proves</summary>
         <div class="mwrap">
         <table class="mtable">
           <thead>
             <tr><th>#</th><th>Milestone</th><th>Phase</th><th>When</th><th>What this milestone proves</th></tr>
           </thead>
           <tbody>
-            <tr><td class="mn">01</td><td class="ms">Kickoff and requirements freeze</td><td class="ph2"><span class="pdot" style="background:#1BC9B6"></span>Define</td><td class="mo2">~M0</td><td class="md">The scope, targets and acceptance criteria are agreed and frozen, so nothing shifts mid-project.</td></tr>
-            <tr><td class="mn">02</td><td class="ms">HW scope decided, SW starts on eval kit<span class="pf2">Decided</span></td><td class="ph2"><span class="pdot" style="background:#1BC9B6"></span>Define</td><td class="mo2">~M1</td><td class="md">The hardware change set is decided and the server, DB and app are already running on the evaluation kit, in parallel with the hardware work.</td></tr>
-            <tr><td class="mn">03</td><td class="ms">Carrier schematic and layout</td><td class="ph2"><span class="pdot" style="background:#00A89A"></span>Design</td><td class="mo2">~M2</td><td class="md">The carrier design is complete for the i.MX95 pins in use, power rails and our connectors, reusing the existing I/O concept.</td></tr>
-            <tr><td class="mn">04</td><td class="ms">App runs on the i.MX95 eval kit</td><td class="ph2"><span class="pdot" style="background:#00857C"></span>Develop</td><td class="mo2">~M3</td><td class="md">The ported application stack runs on the i.MX95 evaluation kit, proving the software on the new SoC before our own hardware exists.</td></tr>
-            <tr><td class="mn">05</td><td class="ms">EVT boards and BSP bring-up</td><td class="ph2"><span class="pdot" style="background:#00857C"></span>Develop</td><td class="mo2">~M3.5</td><td class="md">The first prototype carriers power up and boot, and every interface this product uses comes up on our own board.</td></tr>
-            <tr><td class="mn">06</td><td class="ms">First offline event on prototype hardware<span class="pf2">Demonstrated</span></td><td class="ph2"><span class="pdot" style="background:#00857C"></span>Develop</td><td class="mo2">~M4.5</td><td class="md">On prototype hardware, with the cloud disconnected, the unit captures a sensor event and displays it locally, the core offline proof.</td></tr>
-            <tr><td class="mn">07</td><td class="ms">App port and full offline validation</td><td class="ph2"><span class="pdot" style="background:#00857C"></span>Develop</td><td class="mo2">~M5.5</td><td class="md">The ported stack reproduces the same stored records and user-visible results offline, matching the existing device and the expected outcome.</td></tr>
-            <tr><td class="mn">08</td><td class="ms">System integration in the enclosure</td><td class="ph2"><span class="pdot" style="background:#00857C"></span>Develop</td><td class="mo2">~M6</td><td class="md">The device runs as a whole inside the intended IP67 enclosure; the hardware and software tracks converge here.</td></tr>
-            <tr><td class="mn">09</td><td class="ms">DVT: functional, thermal, IP67</td><td class="ph2"><span class="pdot" style="background:#3E7CB1"></span>Validate</td><td class="mo2">~M7.5</td><td class="md">Function, thermals and sealing meet the spec, and the agreed EMC, safety and IP67 retests pass.</td></tr>
-            <tr><td class="mn">10</td><td class="ms">Production line and fixtures ready</td><td class="ph2"><span class="pdot" style="background:#8E7CC3"></span>Launch</td><td class="mo2">~M8.5</td><td class="md">The production line, test fixtures and eMMC flashing are ready before the pilot build.</td></tr>
-            <tr><td class="mn">11</td><td class="ms">PVT: pilot build to criteria<span class="pf2">Validated in production</span></td><td class="ph2"><span class="pdot" style="background:#8E7CC3"></span>Launch</td><td class="mo2">~M9.5</td><td class="md">The production line can repeatedly flash, assemble and test units against the agreed acceptance criteria, the production proof.</td></tr>
-            <tr><td class="mn">12</td><td class="ms">Release, ready for sale (GA)</td><td class="ph2"><span class="pdot" style="background:#8E7CC3"></span>Launch</td><td class="mo2">~M10</td><td class="md">The pilot results are approved, documentation is complete and the product is released for general sale.</td></tr>
+            <tr><td class="mn">M0</td><td class="ms">Kickoff and release scope agreed</td><td class="ph2"><span class="pdot" style="background:#1BC9B6"></span>Define</td><td class="mo2">~M0</td><td class="md">The release scope is agreed. From here software starts on the evaluation kit and hardware starts the compatibility review, in parallel.</td></tr>
+            <tr><td class="mn">01</td><td class="ms">Hardware changes agreed<span class="pf2">Decided</span></td><td class="ph2"><span class="pdot" style="background:#1BC9B6"></span>Define</td><td class="mo2">~M1</td><td class="md">Decided what to keep and what to change on the board and enclosure, after checking the pins in use, voltage, power and mechanical fit. Engineering and Compliance set the initial retest scope from the expected changes.</td></tr>
+            <tr><td class="mn">02</td><td class="ms">Early IP67 verification</td><td class="ph2"><span class="pdot" style="background:#00A89A"></span>Design</td><td class="mo2">~M2</td><td class="md">The early-test results, or approved existing evidence, are documented against the configuration that was checked. Any remaining gap is stated explicitly.</td></tr>
+            <tr><td class="mn">03</td><td class="ms">Application stack runs on evaluation kit</td><td class="ph2"><span class="pdot" style="background:#00857C"></span>Develop</td><td class="mo2">~M3</td><td class="md">The server, database and web interface run together on the i.MX95 kit, the first point where the full stack is shown working.</td></tr>
+            <tr><td class="mn">04</td><td class="ms">First offline event on EVT hardware<span class="pf2">Demonstrated</span></td><td class="ph2"><span class="pdot" style="background:#00857C"></span>Develop</td><td class="mo2">~M4.5</td><td class="md">On MSD's prototype, with the internet disconnected, one sensor event is captured, stored in the database and shown in the local interface. The hardware and software tracks meet here for the first time.</td></tr>
+            <tr><td class="mn">05</td><td class="ms">Offline workflows verified in enclosure</td><td class="ph2"><span class="pdot" style="background:#00857C"></span>Develop</td><td class="mo2">~M6</td><td class="md">The device assembled in the enclosure passes the full working scenarios: boot with no internet, access to data stored before boot, and ingest of new events. Results are compared against both the previous generation and a known expected outcome.</td></tr>
+            <tr><td class="mn">06</td><td class="ms">DVT passed</td><td class="ph2"><span class="pdot" style="background:#3E7CB1"></span>Validate</td><td class="mo2">~M7.5</td><td class="md">Functional, thermal and the agreed compliance tests pass. QA confirms the IP67 evidence covers the configuration intended for sale and closes gaps or changes since M2.</td></tr>
+            <tr><td class="mn">07</td><td class="ms">Production line ready</td><td class="ph2"><span class="pdot" style="background:#8E7CC3"></span>Launch</td><td class="mo2">~M8.5</td><td class="md">Assembly instructions, eMMC flashing, test fixtures and end-of-line tests are ready to run the pilot.</td></tr>
+            <tr><td class="mn">08</td><td class="ms">Pilot build meets acceptance criteria<span class="pf2">Validated in production</span></td><td class="ph2"><span class="pdot" style="background:#8E7CC3"></span>Launch</td><td class="mo2">~M9.5</td><td class="md">The pilot run met the first-pass yield target agreed with Operations and QA, with no open blocking defects for release.</td></tr>
+            <tr><td class="mn">09</td><td class="ms">Released for sale</td><td class="ph2"><span class="pdot" style="background:#8E7CC3"></span>Launch</td><td class="mo2">~M10</td><td class="md">Pilot results approved, product and manufacturing documents released, and the product ready to ship.</td></tr>
           </tbody>
         </table>
         </div>
