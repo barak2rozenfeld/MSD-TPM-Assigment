@@ -632,7 +632,7 @@
           </ul>
         </div>
       </div>
-      <div class="whyline r" style="--d:.34s"><b>Acceptance:</b> with the internet disconnected, replay the same sensor events on the new unit and compare its stored records and user-visible results against both the existing device and a known expected outcome. <span class="src nolink">IP67, offline: MSD brief</span></div>
+      <div class="whyline r" style="--d:.34s"><b>Acceptance:</b> with the internet disconnected, replay the same sensor events on the new unit and compare its stored records and user-visible results against both the existing device and a known expected outcome. A short reconnection check then confirms that when the internet returns, the gateway resumes communication with the cloud exactly as the current generation does. <span class="src nolink">IP67, offline: MSD brief</span></div>
 
       <details class="study r" style="--d:.4s">
         <summary>Why I scope it this way</summary>
@@ -704,14 +704,15 @@
               <div class="strack">
                 <div class="seg hw" style="left:1%;width:9%">Compatibility review<span class="sm">M0 to M1</span></div>
                 <div class="seg hw" style="left:11%;width:34%">Carrier design + prototype<span class="sm">M1 to M4.5</span></div>
-                <div class="seg hw" style="left:46%;width:28%">Carrier spins to DVT<span class="sm">M4.5 to M7.5</span></div>
+                <div class="seg hw" style="left:46%;width:28%">EVT fixes and DVT preparation<span class="sm">M4.5 to M7.5</span></div>
               </div>
             </div>
             <div class="slane">
               <div class="slabel"><i style="background:#00A89A"></i>Software</div>
               <div class="strack">
                 <div class="seg sw" style="left:1%;width:28%">App stack on evaluation kit<span class="sm">M0 to M3</span></div>
-                <div class="seg sw" style="left:30%;width:29%">Offline validation on EVT<span class="sm">M3 to M6</span></div>
+                <div class="seg sw" style="left:30%;width:14%">Offline tests on eval kit<span class="sm">M3 to M4.5</span></div>
+                <div class="seg sw" style="left:45%;width:14%">Tests on EVT prototype<span class="sm">M4.5 to M6</span></div>
                 <div class="seg sw" style="left:60%;width:14%">Fixes through DVT<span class="sm">M6 to M7.5</span></div>
               </div>
             </div>
@@ -741,7 +742,7 @@
         <summary>How I would validate the 10-month assumption</summary>
         <div class="study-body">
           <p><b>Activities leading to M4.5.</b> Carrier design, prototype build and BSP bring-up all run between M1 and M4.5 on the hardware track, in parallel with software on the evaluation kit. They are the work behind the first offline event, not separate milestones.</p>
-          <p><b>How the four tracks overlap.</b> Hardware runs the compatibility review from kickoff to M1, then carrier design and the prototype up to M4.5, then carrier spins through DVT. Software brings the app stack up on the evaluation kit from M0, then validates offline behaviour on EVT. Integration and QA are not left to the end: the test plan and retest scope are set at M1, the first bench integration is at M4.5, and DVT follows. NPI starts at M1 too, with supplier and BOM setup, then fixtures, eMMC flashing and assembly preparation, so the line is pilot-ready at M8.5 without waiting for DVT to finish. The swim-lane chart on the slide shows each of these segments against the milestones.</p>
+          <p><b>How the four tracks overlap.</b> Hardware runs the compatibility review from kickoff to M1, then carrier design and the prototype up to M4.5, then EVT fixes and DVT preparation, with a further carrier spin only if the EVT findings require it, which would add roughly 6 to 8 weeks. Software brings the app stack up on the evaluation kit from M0, runs offline tests there, and after the first integration at M4.5 continues testing on the EVT prototype. Integration and QA are not left to the end: the test plan and retest scope are set at M1, the first bench integration is at M4.5, and DVT follows. NPI starts at M1 too, with supplier and BOM setup, then fixtures, eMMC flashing and assembly preparation, so the line is pilot-ready at M8.5 without waiting for DVT to finish. The swim-lane chart on the slide shows each of these segments against the milestones.</p>
           <p><b>Who validates it.</b> Hardware owns the carrier compatibility review; Mechanical and QA own the early IP67 check; Engineering and Compliance own the EMC, safety and IP67 retest scope; Procurement owns the module lifecycle and lead-time check. The planning number stays mine as a target, not a commitment.</p>
           <p><b>When.</b> At M1 we agree the hardware changes and initial retest scope. By M2 we review early IP67 evidence and record any gaps. At DVT we confirm coverage of the final configuration.</p>
           <p><b>What triggers a schedule revision.</b> A needed second carrier design cycle adds roughly 6 to 8 weeks. If the enclosure must change, the schedule updates with the scope of that change.</p>
