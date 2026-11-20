@@ -2,9 +2,5 @@
 Task-for-TPM.docx
 ~$*
 
-# Vendor datasheets (copyrighted PDFs, downloaded only as working references)
-datasheets/
-
 # Generated / local
-*.pdf
 terminals/

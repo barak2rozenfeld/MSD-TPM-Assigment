@@ -13,6 +13,8 @@ Author: **Barak Rozenfeld** (TPM Assignment, MSD Animal Health)
   Open it directly in any modern browser, or use the in-page **Download PDF**
   button to export.
 - **`assets/`** — logo and device photo.
+- **`datasheets/`** — the vendor reference material the proposal is based on
+  (NXP i.MX6 / i.MX95, ADLINK LEC-iMX6 / LEC-iMX95, SGET SMARC spec).
 
 ## The four slides
 1. **Launch decision** — run the i.MX95 server with the same offline farm workflows.
