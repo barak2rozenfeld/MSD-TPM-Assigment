@@ -183,7 +183,7 @@
   .phases{display:flex;gap:10px;margin-bottom:8px}
   .phase{font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:999px;border:1px solid var(--card-brd);color:var(--muted);background:var(--card)}
   .phase b{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;vertical-align:middle}
-  .timeline{position:relative;display:grid;grid-template-columns:repeat(12,1fr);align-items:center;padding:70px 0;margin-top:6px}
+  .timeline{position:relative;display:grid;grid-template-columns:repeat(12,1fr);align-items:center;padding:98px 0 104px;margin-top:6px}
   .timeline .rail{position:absolute;left:0;right:0;top:50%;height:4px;border-radius:4px;background:rgba(255,255,255,.12);transform:translateY(-50%)}
   .timeline .railfill{position:absolute;left:0;top:50%;height:4px;border-radius:4px;background:linear-gradient(90deg,var(--teal),var(--teal-bright));transform:translateY(-50%);width:0;transition:width 1.6s ease .3s;box-shadow:0 0 16px rgba(27,201,182,.7)}
   .node{position:relative;display:flex;justify-content:center}
@@ -247,10 +247,10 @@
   .whyline b{color:#fff}
 
   /* ---- compact options row (chosen path, inline on the Q2 slide) ---- */
-  .optrow{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+  .optrow{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}
   .optmini{background:var(--card);border:1px solid var(--card-brd);border-radius:14px;padding:13px 15px;display:flex;flex-direction:column;gap:6px}
   .optmini.chosen{border-color:var(--teal-bright);background:linear-gradient(180deg,rgba(0,168,154,.15),rgba(27,201,182,.05));box-shadow:0 0 0 1px rgba(27,201,182,.3)}
-  .optmini .ot{font-size:11px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;align-items:center;gap:8px}
+  .optmini .ot{font-size:11px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
   .optmini.chosen .ot{color:var(--teal-bright)}
   .optmini .v{font-weight:800;letter-spacing:.03em;white-space:nowrap}
   .optmini .v.r{color:#E8604C}
@@ -331,7 +331,7 @@
     .road{grid-template-columns:1fr;gap:0}
     .rstep .n::before{left:-8px}
     .opts{grid-template-columns:1fr;gap:13px}
-    .optrow{grid-template-columns:1fr;gap:11px}
+    .optrow{grid-template-columns:1fr 1fr;gap:11px}
     .deltas{grid-template-columns:1fr;gap:13px}
     .reuse ul.ticks{flex-direction:column}
     .reuse ul.ticks li{flex:1 1 100%}
@@ -494,7 +494,7 @@
 
       <div class="r" style="--d:.12s;font-size:13.5px;color:var(--muted);margin-top:4px">I weighed four approaches against MSD's time-to-market priority. <b style="color:#fff">My choice: upgrade within the SMARC family to the i.MX95</b>, which reuses the enclosure and I/O and changes only what the new module requires. <span class="src nolink">Scope: MSD brief</span></div>
 
-      <div class="optrow r" style="--d:.2s;grid-template-columns:repeat(4,1fr)">
+      <div class="optrow r" style="--d:.2s">
         <div class="optmini"><div class="ot">Option A <span class="v" style="color:#E8604C">Defers risk</span></div><h4>Keep LEC-iMX6</h4><p>No project now, but supply, capacity and security stay unaddressed.</p></div>
         <div class="optmini chosen"><div class="ot">Option B <span class="v">Chosen</span></div><h4>Upgrade to LEC-iMX95</h4><p>Same SMARC form factor: reuse the enclosure and I/O, change only what the module requires.</p></div>
         <div class="optmini"><div class="ot">Option C <span class="v" style="color:#E8604C">More rework</span></div><h4>Different vendor module</h4><p>New supplier qualification and BSP for little gain over staying in SMARC.</p></div>
@@ -562,7 +562,7 @@
           <span class="phase"><b style="background:#3E7CB1"></b>Validate</span>
           <span class="phase"><b style="background:#8E7CC3"></b>Launch</span>
         </div>
-        <div class="timeline r" style="--d:.18s;padding:98px 0 104px">
+        <div class="timeline r" style="--d:.18s">
           <div class="rail"></div>
           <div class="railfill" id="railfill"></div>
           <div class="node up"><div class="card"><div class="m">01</div><div class="t">Kickoff and requirements freeze</div><div class="mo">~M0</div></div><div class="pt"></div></div>
