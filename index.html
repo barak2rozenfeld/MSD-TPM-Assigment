@@ -215,21 +215,23 @@
   .lanes-wrap{margin-top:2px}
   .lanes-head{font-size:12.5px;font-weight:700;color:#CFF6F0;line-height:1.45;margin-bottom:16px;display:flex;gap:9px}
   .lanes-head::before{content:"";flex:0 0 auto;width:18px;height:2px;margin-top:8px;border-radius:2px;background:var(--teal-bright)}
-  .lanes{position:relative;display:flex;flex-direction:column;gap:14px}
-  .lane{position:relative;height:36px}
-  .lane .lbar{position:absolute;top:0;bottom:0;border-radius:10px;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:0 15px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.4)}
-  .lane .lbar::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.18),transparent 45%);pointer-events:none}
-  .lbar.hw{background:linear-gradient(90deg,#1BC9B6,#00857C);border:1px solid rgba(27,201,182,.6)}
-  .lbar.npi{background:linear-gradient(90deg,#8E7CC3,#3E7CB1);border:1px solid rgba(142,124,195,.6)}
-  .lbar .lname{font-size:12.5px;font-weight:800;color:#fff;white-space:nowrap;z-index:1}
-  .lbar .lrange{font-family:var(--mono);font-size:11px;font-weight:700;color:#fff;background:rgba(0,0,0,.24);padding:3px 10px;border-radius:999px;white-space:nowrap;z-index:1}
-  .lane .lcp{position:absolute;top:50%;width:13px;height:13px;border-radius:50%;background:#fff;transform:translate(-50%,-50%);box-shadow:0 0 0 4px rgba(7,19,38,.9),0 0 12px rgba(255,255,255,.85);z-index:3}
-  .lane .lcplabel{position:absolute;top:-14px;transform:translateX(-50%);font-family:var(--mono);font-size:10px;font-weight:700;color:#CFF6F0;white-space:nowrap;z-index:3}
-  .bpath{display:flex;align-items:center;flex-wrap:wrap;gap:3px;margin-top:16px}
-  .bpath .blab{font-size:10px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-right:7px}
-  .bpath .bp{font-family:var(--mono);font-size:10.5px;font-weight:700;color:#CFF6F0;background:var(--card);border:1px solid var(--card-brd);padding:5px 11px;border-radius:999px}
-  .bpath .bsep{width:17px;height:13px;display:grid;place-items:center}
-  .bpath .bsep svg{width:11px;height:11px;stroke:var(--teal-bright);fill:none}
+  /* swim-lane view: what each track actually does between the milestones */
+  .swim{position:relative;display:flex;flex-direction:column;gap:8px;padding-top:18px}
+  .swim .axis{position:absolute;left:130px;right:0;top:18px;bottom:0;pointer-events:none;z-index:0}
+  .swim .gl{position:absolute;top:0;bottom:0;border-left:1px dashed rgba(255,255,255,.14)}
+  .swim .gl em{position:absolute;top:-15px;left:0;transform:translateX(-50%);font-family:var(--mono);font-size:9px;font-style:normal;color:var(--muted);white-space:nowrap}
+  .swim .gl.key{border-left:1px dashed rgba(27,201,182,.65)}
+  .swim .gl.key em{color:#CFF6F0;font-weight:700}
+  .slane{position:relative;display:flex;align-items:center;gap:12px;z-index:1}
+  .slane .slabel{flex:0 0 118px;width:118px;display:flex;align-items:center;justify-content:flex-end;gap:7px;text-align:right;font-size:11.5px;font-weight:800;color:#fff;line-height:1.1}
+  .slane .slabel i{flex:0 0 auto;width:9px;height:9px;border-radius:3px}
+  .slane .strack{position:relative;flex:1;height:30px;border-radius:8px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.06)}
+  .seg{position:absolute;top:3px;bottom:3px;border-radius:6px;display:flex;align-items:center;gap:6px;padding:0 9px;font-size:10px;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden;box-shadow:0 3px 10px rgba(0,0,0,.3)}
+  .seg .sm{display:none}
+  .seg.hw{background:linear-gradient(90deg,#1BC9B6,#13a89a)}
+  .seg.sw{background:linear-gradient(90deg,#00A89A,#00857C)}
+  .seg.it{background:linear-gradient(90deg,#4f93cc,#3E7CB1)}
+  .seg.npi{background:linear-gradient(90deg,#9b86d4,#8E7CC3)}
 
   /* ---------- watermark logo bottom-left on content slides ---------- */
   .wm{position:fixed;bottom:22px;left:28px;z-index:20;opacity:.5;display:flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
@@ -383,12 +385,14 @@
     .node .card::after{display:none}
     .tl-end{flex-direction:column;align-items:flex-start;gap:8px;margin-top:14px}
     .phases{flex-wrap:wrap}
-    /* parallel lanes stack full-width on mobile */
-    .lanes{gap:10px}
-    .lane{height:auto}
-    .lane .lbar{position:static;left:auto !important;width:auto !important;padding:11px 15px;flex-wrap:wrap;gap:7px}
-    .lane .lcp,.lane .lcplabel{display:none}
-    .bpath{gap:4px}
+    /* swim lanes stack full-width on mobile, activities become chips */
+    .swim{padding-top:0;gap:14px}
+    .swim .axis{display:none}
+    .slane{flex-direction:column;align-items:stretch;gap:7px}
+    .slane .slabel{width:auto;flex:none;justify-content:flex-start;text-align:left;font-size:13px}
+    .slane .strack{height:auto;background:none;border:none;display:flex;flex-direction:column;gap:6px}
+    .seg{position:static;left:auto !important;width:auto !important;top:auto;bottom:auto;white-space:normal;padding:8px 11px;font-size:11.5px;justify-content:space-between}
+    .seg .sm{display:inline;font-family:var(--mono);font-size:10px;font-weight:700;color:rgba(255,255,255,.9);background:rgba(0,0,0,.22);padding:2px 7px;border-radius:999px;margin-left:8px;flex:0 0 auto}
 
     /* ---- mobile WOW polish ---- */
     html{scroll-behavior:smooth}
@@ -637,18 +641,47 @@
           <div class="node down"><div class="card"><div class="m">09</div><div class="t">Released for sale</div><div class="mo">~M10</div></div><div class="pt"></div></div>
         </div>
         <div class="lanes-wrap r" style="--d:.28s">
-          <div class="lanes-head">Time-to-market is MSD's first priority, so two tracks overlap the milestones instead of running one after another. Hardware and software converge at M4.5, the first offline event; NPI preparation, begun at M1, makes the line pilot-ready at M8.5.</div>
-          <div class="lanes">
-            <div class="lane">
-              <div class="lbar hw" style="left:5%;width:40%"><span class="lname">Hardware &amp; software in parallel</span><span class="lrange">M0 to M4.5</span></div>
-              <span class="lcp" style="left:45%"></span><span class="lcplabel" style="left:45%">M4.5 offline event</span>
+          <div class="lanes-head">The milestones are checkpoints; these four tracks show the actual work between them. Time-to-market is MSD's first priority, so hardware, software, integration and NPI run in parallel, and testing starts at M1, not at the end. The two tracks first integrate at M4.5, and the line is pilot-ready by M8.5.</div>
+          <div class="swim">
+            <div class="axis">
+              <div class="gl" style="left:10%"><em>M1</em></div>
+              <div class="gl key" style="left:45%"><em>M4.5 first integration</em></div>
+              <div class="gl key" style="left:85%"><em>M8.5 pilot-ready</em></div>
             </div>
-            <div class="lane">
-              <div class="lbar npi" style="left:15%;width:60%"><span class="lname">NPI preparation</span><span class="lrange">M1 to M8.5</span></div>
-              <span class="lcp" style="left:75%"></span><span class="lcplabel" style="left:75%">M8.5 line pilot-ready</span>
+            <div class="slane">
+              <div class="slabel"><i style="background:#1BC9B6"></i>Hardware</div>
+              <div class="strack">
+                <div class="seg hw" style="left:8%;width:9%">Compatibility review<span class="sm">M1</span></div>
+                <div class="seg hw" style="left:18%;width:26%">Carrier design + prototype<span class="sm">M1 to M4.5</span></div>
+                <div class="seg hw" style="left:46%;width:28%">Carrier spins to DVT<span class="sm">M4.5 to M7.5</span></div>
+              </div>
+            </div>
+            <div class="slane">
+              <div class="slabel"><i style="background:#00A89A"></i>Software</div>
+              <div class="strack">
+                <div class="seg sw" style="left:1%;width:28%">App stack on evaluation kit<span class="sm">M0 to M3</span></div>
+                <div class="seg sw" style="left:30%;width:29%">Offline validation on EVT<span class="sm">M3 to M6</span></div>
+                <div class="seg sw" style="left:60%;width:14%">Fixes through DVT<span class="sm">M6 to M7.5</span></div>
+              </div>
+            </div>
+            <div class="slane">
+              <div class="slabel"><i style="background:#3E7CB1"></i>Integration &amp; test</div>
+              <div class="strack">
+                <div class="seg it" style="left:8%;width:14%">Test plan + retest scope<span class="sm">M1</span></div>
+                <div class="seg it" style="left:45%;width:14%">Bench integration on EVT<span class="sm">M4.5 to M6</span></div>
+                <div class="seg it" style="left:60%;width:9%">In-enclosure verify<span class="sm">M6</span></div>
+                <div class="seg it" style="left:70%;width:12%">DVT<span class="sm">M7.5</span></div>
+              </div>
+            </div>
+            <div class="slane">
+              <div class="slabel"><i style="background:#8E7CC3"></i>NPI &amp; Ops</div>
+              <div class="strack">
+                <div class="seg npi" style="left:10%;width:19%">Supplier + BOM setup<span class="sm">M1 to M3</span></div>
+                <div class="seg npi" style="left:30%;width:54%">Fixtures, flashing, assembly prep<span class="sm">M3 to M8.5</span></div>
+                <div class="seg npi" style="left:85%;width:11%">Pilot / PVT<span class="sm">M8.5 to M9.5</span></div>
+              </div>
             </div>
           </div>
-          <div class="bpath"><span class="blab">Hardware build path</span><span class="bp">Carrier</span><span class="bsep"><svg viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></span><span class="bp">EVT</span><span class="bsep"><svg viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></span><span class="bp">DVT</span><span class="bsep"><svg viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></span><span class="bp">PVT</span><span class="bsep"><svg viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></span><span class="bp">Release</span></div>
         </div>
         <div class="assume r" style="--d:.3s"><span class="estlabel">My planning estimate</span>The <b>M10</b> target assumes enclosure reuse and at most one carrier design cycle. A second carrier spin would add roughly <b>6 to 8 weeks</b>. If the enclosure must change, the schedule updates with the scope of that change.</div>
       </div>
@@ -656,7 +689,7 @@
         <summary>How I would validate the 10-month assumption</summary>
         <div class="study-body">
           <p><b>Activities leading to M4.5.</b> Carrier design, prototype build and BSP bring-up all run between M1 and M4.5 on the hardware track, in parallel with software on the evaluation kit. They are the work behind the first offline event, not separate milestones.</p>
-          <p><b>The second overlap.</b> From M1, while development and DVT run, Procurement closes module availability and lead time, QA and Compliance coordinate the lab slots, and NPI prepares eMMC flashing, test fixtures and assembly instructions. This is why the line is pilot-ready at M8.5: the preparation did not wait for DVT to finish. On the slide the two shaded lanes show these overlaps, and the build path runs Carrier, EVT, DVT, PVT, Release.</p>
+          <p><b>How the four tracks overlap.</b> Hardware runs the compatibility review at M1, then carrier design and the prototype up to M4.5, then carrier spins through DVT. Software brings the app stack up on the evaluation kit from M0, then validates offline behaviour on EVT. Integration and test are not left to the end: the test plan and retest scope are set at M1, the first bench integration is at M4.5, and DVT follows. NPI starts at M1 too, with supplier and BOM setup, then fixtures, eMMC flashing and assembly preparation, so the line is pilot-ready at M8.5 without waiting for DVT to finish. The swim-lane chart on the slide shows each of these segments against the milestones.</p>
           <p><b>Who validates it.</b> Hardware owns the carrier compatibility review; Mechanical and QA own the early IP67 check; Engineering and Compliance own the EMC, safety and IP67 retest scope; Procurement owns the module lifecycle and lead-time check. The planning number stays mine as a target, not a commitment.</p>
           <p><b>When.</b> At M1 we agree the hardware changes and initial retest scope. By M2 we review early IP67 evidence and record any gaps. At DVT we confirm coverage of the final configuration.</p>
           <p><b>What triggers a schedule revision.</b> A needed second carrier design cycle adds roughly 6 to 8 weeks. If the enclosure must change, the schedule updates with the scope of that change.</p>
