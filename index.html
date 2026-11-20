@@ -133,6 +133,12 @@
   .arrow-flow .old{color:var(--muted)}
   .arrow-flow .ar{color:var(--teal-bright);font-size:1.3em}
   .arrow-flow .new{color:#fff}
+  /* slide-1 at-a-glance chip strip */
+  .glance{display:flex;flex-wrap:wrap;gap:9px}
+  .glance .gchip{font-size:12px;font-weight:700;color:#CFF6F0;background:rgba(27,201,182,.09);border:1px solid var(--card-brd);padding:6px 12px 6px 11px;border-radius:999px;display:flex;align-items:center;gap:7px}
+  .glance .gchip::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--teal-bright);box-shadow:0 0 8px rgba(27,201,182,.8)}
+  .glance .gchip.hi{color:#06211d;background:linear-gradient(90deg,var(--teal-bright),#00A89A);border-color:transparent;font-weight:800}
+  .glance .gchip.hi::before{background:#06211d;box-shadow:none}
   .foot{margin-top:auto;display:flex;align-items:center;gap:16px;color:var(--muted);font-size:13px}
   .foot .dotsep{width:4px;height:4px;border-radius:50%;background:var(--muted)}
 
@@ -235,6 +241,13 @@
   .seg.sw{background:linear-gradient(90deg,#00A89A,#00857C)}
   .seg.it{background:linear-gradient(90deg,#4f93cc,#3E7CB1)}
   .seg.npi{background:linear-gradient(90deg,#9b86d4,#8E7CC3)}
+  /* slide-4 start-here marker on M0 + swim-lane colour key */
+  .node.start .pt{animation:startpulse 2s ease-in-out infinite}
+  @keyframes startpulse{0%,100%{box-shadow:0 0 0 4px rgba(7,19,38,.9),0 0 0 7px rgba(27,201,182,.18)}50%{box-shadow:0 0 0 4px rgba(7,19,38,.9),0 0 0 12px rgba(27,201,182,.45)}}
+  .startflag{position:absolute;left:50%;transform:translateX(-50%);top:calc(50% + 24px);font-size:9px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#06211d;background:var(--teal-bright);padding:3px 9px;border-radius:999px;white-space:nowrap;box-shadow:0 0 14px rgba(27,201,182,.6);z-index:4}
+  .startflag::after{content:"";position:absolute;left:50%;bottom:100%;transform:translateX(-50%);border:5px solid transparent;border-bottom-color:var(--teal-bright)}
+  .swimkey{margin-top:13px;font-size:10.5px;color:var(--muted);line-height:1.45}
+  .swimkey b{color:#CFF6F0;font-weight:800}
 
   /* ---------- watermark logo bottom-left on content slides ---------- */
   .wm{position:fixed;bottom:22px;left:28px;z-index:20;opacity:.5;display:flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
@@ -282,8 +295,30 @@
 
   /* ---- compact options row (chosen path, inline on the Q2 slide) ---- */
   .optrow{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}
-  .optmini{background:var(--card);border:1px solid var(--card-brd);border-radius:14px;padding:13px 15px;display:flex;flex-direction:column;gap:6px}
+  .optmini{position:relative;overflow:hidden;background:var(--card);border:1px solid var(--card-brd);border-radius:14px;padding:15px 15px 13px;display:flex;flex-direction:column;gap:6px}
+  .optmini::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:rgba(255,255,255,.14)}
+  .optmini.rej::before{background:#E8604C}
+  .optmini.rej{opacity:.92}
+  .optmini.chosen::before{background:linear-gradient(90deg,var(--teal),var(--teal-bright))}
   .optmini.chosen{border-color:var(--teal-bright);background:linear-gradient(180deg,rgba(0,168,154,.15),rgba(27,201,182,.05));box-shadow:0 0 0 1px rgba(27,201,182,.3)}
+  /* slide-3 decision map: time to market vs risk */
+  .dmaphead{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:2px}
+  .dmaphead .dt{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-bright);display:flex;align-items:center;gap:8px}
+  .dmaphead .dt::before{content:"";width:18px;height:2px;border-radius:2px;background:var(--teal-bright)}
+  .dmap{position:relative;height:172px;border:1px solid var(--card-brd);border-radius:14px;background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,0))}
+  .dmap .plot{position:absolute;left:58px;right:18px;top:16px;bottom:30px}
+  .dmap .sweet{position:absolute;left:0;bottom:0;width:42%;height:48%;background:radial-gradient(ellipse at bottom left,rgba(27,201,182,.22),transparent 72%);border-top:1px dashed rgba(27,201,182,.35);border-right:1px dashed rgba(27,201,182,.35);border-radius:0 0 0 12px}
+  .dmap .sweet b{position:absolute;left:9px;bottom:7px;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--teal-bright)}
+  .dmap .pt2{position:absolute;transform:translate(-50%,50%)}
+  .dmap .pt2 .d2{width:15px;height:15px;border-radius:50%;background:#E8604C;border:2px solid rgba(255,255,255,.35);box-shadow:0 2px 8px rgba(0,0,0,.4)}
+  .dmap .pt2 .pl{position:absolute;left:50%;top:-17px;transform:translateX(-50%);font-size:10.5px;font-weight:800;color:#fff;white-space:nowrap}
+  .dmap .pt2 .ps{position:absolute;left:50%;top:15px;transform:translateX(-50%);font-size:8.5px;color:var(--muted);white-space:nowrap;font-weight:600}
+  .dmap .pt2.chosen .d2{width:22px;height:22px;background:var(--teal-bright);border-color:#fff;box-shadow:0 0 0 5px rgba(27,201,182,.22),0 0 18px rgba(27,201,182,.85)}
+  .dmap .pt2.chosen .pl{color:var(--teal-bright);font-size:11.5px}
+  .dmap .axx{position:absolute;left:58px;right:18px;bottom:9px;display:flex;justify-content:space-between;font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+  .dmap .axx .mid{position:absolute;left:50%;transform:translateX(-50%);color:#CFF6F0}
+  .dmap .axy{position:absolute;left:10px;top:16px;bottom:30px;width:14px;display:flex;flex-direction:column;justify-content:space-between;align-items:center;font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+  .dmap .axy .lab{position:absolute;left:-7px;top:50%;transform:rotate(-90deg);transform-origin:center;color:#CFF6F0;white-space:nowrap}
   .optmini .ot{font-size:11px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
   .optmini.chosen .ot{color:var(--teal-bright)}
   .optmini .v{font-weight:800;letter-spacing:.03em;white-space:nowrap}
@@ -386,6 +421,9 @@
     .node .card::after{display:none}
     .tl-end{flex-direction:column;align-items:flex-start;gap:8px;margin-top:14px}
     .phases{flex-wrap:wrap}
+    /* decluttered decision map + hidden start flag on mobile */
+    .dmap .pt2 .ps{display:none}
+    .startflag{display:none}
     /* swim lanes stack full-width on mobile, activities become chips */
     .swim{padding-top:0;gap:14px}
     .swim .axis{display:none}
@@ -418,6 +456,15 @@
   }
 
   /* ================= PRINT / PDF ================= */
+  /* ---- accessibility: keyboard focus + reduced motion ---- */
+  .arrow:focus-visible,.dot:focus-visible,.study>summary:focus-visible,a.src:focus-visible,.gchip:focus-visible{outline:2px solid var(--teal-bright);outline-offset:3px;border-radius:10px}
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}
+    .slide .r{opacity:1 !important;transform:none !important}
+    .node .pt{transform:scale(1) !important}
+    .node .card{opacity:1 !important;transform:none !important}
+    .timeline .railfill{transition:none !important}
+  }
   @media print{
     @page{size:A4 landscape;margin:0}
     html,body{height:auto;overflow:visible;background:#06111f}
@@ -466,8 +513,12 @@
           <span class="chip" style="margin-left:6px">SMARC, COM, ADLINK</span>
         </div>
         <p class="lead r" style="--d:.36s">Validate the application on the evaluation kit while the hardware team checks which parts of the existing design can be reused.</p>
-        <div class="chips r" style="--d:.46s">
-          <span class="chip">Time-to-market first</span>
+        <div class="glance r" style="--d:.46s">
+          <span class="gchip hi">Time-to-market first</span>
+          <span class="gchip">Offline-first</span>
+          <span class="gchip">IP67 enclosure</span>
+          <span class="gchip">Same farm workflows</span>
+          <span class="gchip">10-month target</span>
         </div>
         <div class="srcs r" style="--d:.5s">
           <span class="lbl">Source</span>
@@ -554,10 +605,26 @@
       <div class="r" style="--d:.12s;font-size:13.5px;color:var(--muted);margin-top:4px">I weighed four approaches against MSD's time-to-market priority. <b style="color:#fff">My choice: upgrade within the SMARC family to the i.MX95</b>, preserving the product's interfaces and farm behaviour and changing only what the new module requires. At M1 Hardware decides what can be reused and what must change. <span class="src nolink">Scope: MSD brief</span></div>
 
       <div class="optrow r" style="--d:.2s">
-        <div class="optmini"><div class="ot">Option A <span class="v" style="color:#E8604C">Defers risk</span></div><h4>Keep LEC-iMX6</h4><p>No project now, but supply, capacity and security stay unaddressed.</p></div>
+        <div class="optmini rej"><div class="ot">Option A <span class="v r">Defers risk</span></div><h4>Keep LEC-iMX6</h4><p>No project now, but supply, capacity and security stay unaddressed.</p></div>
         <div class="optmini chosen"><div class="ot">Option B <span class="v">Chosen</span></div><h4>Upgrade to LEC-iMX95</h4><p>Stay in the SMARC family and aim to preserve the enclosure and interfaces; Hardware confirms at M1 what can be reused and what must change.</p></div>
-        <div class="optmini"><div class="ot">Option C <span class="v" style="color:#E8604C">More rework</span></div><h4>Different vendor module</h4><p>New supplier qualification and BSP for little gain over staying in SMARC.</p></div>
-        <div class="optmini"><div class="ot">Option D <span class="v" style="color:#E8604C">Highest risk</span></div><h4>Full custom redesign</h4><p>Maximum optimization but the longest schedule, against the time-to-market priority.</p></div>
+        <div class="optmini rej"><div class="ot">Option C <span class="v r">More rework</span></div><h4>Different vendor module</h4><p>New supplier qualification and BSP for little gain over staying in SMARC.</p></div>
+        <div class="optmini rej"><div class="ot">Option D <span class="v r">Highest risk</span></div><h4>Full custom redesign</h4><p>Maximum optimization but the longest schedule, against the time-to-market priority.</p></div>
+      </div>
+
+      <div class="dmaphead r" style="--d:.22s">
+        <span class="dt">Decision map: time to market vs risk</span>
+        <span class="rlegend"><span class="lk"><i class="core"></i>Chosen</span><span class="lk"><i style="background:#E8604C"></i>Rejected, with reason</span></span>
+      </div>
+      <div class="dmap r" style="--d:.24s">
+        <div class="axy"><span class="lab">Risk</span><span>Higher</span><span>Lower</span></div>
+        <div class="plot">
+          <div class="sweet"><b>Sweet spot</b></div>
+          <div class="pt2" style="left:12%;bottom:70%"><span class="pl">A</span><span class="d2"></span><span class="ps">Keep i.MX6</span></div>
+          <div class="pt2 chosen" style="left:23%;bottom:18%"><span class="pl">B</span><span class="d2"></span><span class="ps">i.MX95 upgrade</span></div>
+          <div class="pt2" style="left:54%;bottom:50%"><span class="pl">C</span><span class="d2"></span><span class="ps">Other vendor</span></div>
+          <div class="pt2" style="left:84%;bottom:78%"><span class="pl">D</span><span class="d2"></span><span class="ps">Full custom</span></div>
+        </div>
+        <div class="axx"><span>Faster</span><span class="mid">Time to market</span><span>Slower</span></div>
       </div>
 
       <div class="deltas r" style="--d:.26s">
@@ -629,7 +696,7 @@
         <div class="timeline r" style="--d:.18s">
           <div class="rail"></div>
           <div class="railfill" id="railfill"></div>
-          <div class="node up"><div class="card"><div class="m">M0</div><div class="t">Kickoff and release scope agreed</div><div class="mo">Start</div></div><div class="pt"></div></div>
+          <div class="node up start"><div class="card"><div class="m">M0</div><div class="t">Kickoff and release scope agreed</div><div class="mo">Start</div></div><div class="pt"></div><div class="startflag">Start here</div></div>
           <div class="node down proof"><div class="card"><div class="m">01</div><div class="t">Hardware changes agreed</div><div class="mo">~M1</div><div class="pf">Decided</div></div><div class="pt"></div></div>
           <div class="node up"><div class="card"><div class="m">02</div><div class="t">Early IP67 evidence reviewed</div><div class="mo">~M2</div></div><div class="pt"></div></div>
           <div class="node down"><div class="card"><div class="m">03</div><div class="t">Application stack runs on evaluation kit</div><div class="mo">~M3</div></div><div class="pt"></div></div>
@@ -682,6 +749,7 @@
               </div>
             </div>
           </div>
+          <div class="swimkey"><b>Reading the chart:</b> the pills at the top are the five delivery phases; the four coloured bars are the parallel workstreams, and an overlap means that work runs at the same time.</div>
         </div>
         <div class="assume r" style="--d:.3s"><span class="estlabel">My planning estimate</span>The <b>M10</b> target assumes enclosure reuse and at most one carrier design cycle. A second carrier spin would add roughly <b>6 to 8 weeks</b>. If the enclosure must change, the schedule updates with the scope of that change.</div>
       </div>
@@ -738,7 +806,10 @@
   const dotsWrap=document.getElementById('dots');
   let i=0;
   slides.forEach((s,idx)=>{
-    const d=document.createElement('div');d.className='dot';d.onclick=()=>go(idx);dotsWrap.appendChild(d);
+    const d=document.createElement('div');d.className='dot';d.tabIndex=0;d.setAttribute('role','button');d.setAttribute('aria-label','Go to slide '+(idx+1));
+    d.onclick=()=>go(idx);
+    d.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go(idx);}};
+    dotsWrap.appendChild(d);
   });
   const dots=[...document.querySelectorAll('.dot')];
   document.getElementById('tot').textContent=slides.length;
@@ -755,8 +826,10 @@
     window.scrollTo(0,0);
   }
   const next=()=>go(i+1), prev=()=>go(i-1);
-  document.getElementById('next').onclick=next;
-  document.getElementById('prev').onclick=prev;
+  [['prev',prev,'Previous slide'],['next',next,'Next slide']].forEach(([id,fn,lbl])=>{
+    const el=document.getElementById(id);el.onclick=fn;el.tabIndex=0;el.setAttribute('role','button');el.setAttribute('aria-label',lbl);
+    el.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();fn();}};
+  });
   document.addEventListener('keydown',e=>{
     if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();next();}
     if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();prev();}
