@@ -363,6 +363,12 @@
   .mtable .ph2{white-space:nowrap;color:var(--muted)}
   .mtable .mo2{font-family:var(--mono);color:var(--muted);white-space:nowrap}
   .mtable .md{color:var(--muted)}
+  .rsev{display:inline-block;font-size:9px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding:2px 8px;border-radius:999px;border:1px solid transparent;white-space:nowrap}
+  .rsev.hi{color:#ffd2c8;background:rgba(232,96,76,.18);border-color:rgba(232,96,76,.55)}
+  .rsev.med{color:#ffe0b3;background:rgba(242,163,60,.16);border-color:rgba(242,163,60,.5)}
+  .rsev.low{color:#bff3ec;background:rgba(27,201,182,.16);border-color:rgba(27,201,182,.5)}
+  .rlegendbar{display:flex;align-items:center;gap:8px;margin:3px 0 1px;font-size:11px;color:var(--muted);flex-wrap:wrap}
+  .rlegendbar .rlbl{margin-left:2px;font-weight:700;color:#CFF6F0}
   .pdot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;vertical-align:middle}
 
   /* ---- expandable study notes (hidden in print) ---- */
@@ -781,6 +787,36 @@
           <p><b>Built from parallel tracks, not a sum of steps.</b> I did not add the phases end to end. Hardware, software, integration and NPI run at the same time, so the duration is set by the critical path: carrier prototype at M4.5, in-enclosure verification at M6, DVT at M7.5, a pilot-ready line at M8.5 and release at M10. The swim-lane chart above shows where the tracks overlap.</p>
           <p><b>What it assumes.</b> Enclosure reuse and at most one carrier design cycle. A second carrier spin adds roughly 6 to 8 weeks, and if the enclosure must change the schedule updates with the scope of that change.</p>
           <p><b>Still a target, not a commitment.</b> The real numbers come from the owners I would validate with: Hardware on the carrier compatibility review, Mechanical and QA on early IP67, Engineering and Compliance on the retest scope, and Procurement on module lifecycle and lead time.</p>
+        </div>
+      </details>
+      <details class="study r" style="--d:.36s">
+        <summary>Appendix: risk assessment</summary>
+        <div class="rlegendbar"><span class="rsev hi">High</span><span class="rsev med">Medium</span><span class="rsev low">Low</span><span class="rlbl">likelihood and impact</span></div>
+        <div class="mwrap">
+        <table class="mtable">
+          <thead>
+            <tr><th>Risk</th><th>Likelihood</th><th>Impact</th><th>Mitigation</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="ms">Carrier needs more rework than expected, from SMARC 1.1 to 2.x pin changes, forcing a second board spin</td><td><span class="rsev med">Medium</span></td><td><span class="rsev hi">High</span></td><td class="md">M1 compatibility review maps the pins, power and thermal before committing, so carrier work is sized from the real change set. A second spin adds 6 to 8 weeks.</td></tr>
+            <tr><td class="ms">IP67 coverage gap if seals, connectors or the lid changed</td><td><span class="rsev med">Medium</span></td><td><span class="rsev med">Medium</span></td><td class="md">Early IP67 evidence reviewed at M2; retest scope agreed with Compliance and carried to DVT, where final coverage is confirmed.</td></tr>
+            <tr><td class="ms">i.MX95 BSP or driver maturity delays the application bring-up</td><td><span class="rsev med">Medium</span></td><td><span class="rsev med">Medium</span></td><td class="md">Confirm BSP support and the drivers in use with ADLINK at M1; software starts on the evaluation kit from M0, off the critical hardware path.</td></tr>
+            <tr><td class="ms">eMMC capacity of 32GB is too small for the database growth and retention period</td><td><span class="rsev low">Low</span></td><td><span class="rsev med">Medium</span></td><td class="md">Confirm capacity against the growth rate and retention at M1 and select the module configuration accordingly.</td></tr>
+            <tr><td class="ms">Production SOM lead time or availability slips</td><td><span class="rsev low">Low</span></td><td><span class="rsev hi">High</span></td><td class="md">Procurement confirms the production part number, lead time and 15-year lifecycle at M1, so build and release dates rest on confirmed supply.</td></tr>
+            <tr><td class="ms">DVT findings force a fixture, BOM or compliance-test change, shrinking the M7.5 to M8.5 float</td><td><span class="rsev med">Medium</span></td><td><span class="rsev med">Medium</span></td><td class="md">Line preparation runs in parallel so the float absorbs a modest slip; the M10 Go/No-Go narrows scope to what is approved if an input stays open.</td></tr>
+            <tr><td class="ms">Offline behaviour does not match the current generation</td><td><span class="rsev low">Low</span></td><td><span class="rsev hi">High</span></td><td class="md">Offline replay acceptance compares stored records and user-visible results against both the existing device and a known expected outcome, with a reconnection check at M6.</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </details>
+      <details class="study r" style="--d:.38s">
+        <summary>Appendix: critical path</summary>
+        <div class="study-body">
+          <p><b>The longest dependent chain sets the date.</b> These steps happen in order, each waiting on the one before, so their sum is the shortest possible schedule.</p>
+        </div>
+        <div class="salechain cpath"><span class="sclabel">Critical path</span><span class="sc">Carrier prototype<em>M1 to M4.5</em></span><span class="sc">First integration<em>M4.5</em></span><span class="sc">In-enclosure verify<em>M6</em></span><span class="sc">DVT<em>M7.5</em></span><span class="sc">Line ready<em>M8.5</em></span><span class="sc">PVT<em>M9.5</em></span><span class="sc go">Release<em>M10</em></span></div>
+        <div class="study-body">
+          <p><b>What has slack.</b> The early IP67 review at M2, the software work on the evaluation kit, and NPI supplier and BOM setup all run in parallel and are not on the critical path. Each is scheduled to be ready before the step that needs it, so none moves the release date unless it slips past its parallel window. The one conditional link is the M7.5 to M8.5 float: a DVT finding that forces a fixture, BOM or compliance change can pull line readiness onto the critical path.</p>
         </div>
       </details>
     </section>
