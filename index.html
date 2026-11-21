@@ -231,6 +231,8 @@
   .swim .gl em{position:absolute;top:-15px;left:0;transform:translateX(-50%);font-family:var(--mono);font-size:9px;font-style:normal;color:var(--muted);white-space:nowrap}
   .swim .gl.key{border-left:1px dashed rgba(27,201,182,.65)}
   .swim .gl.key em{color:#CFF6F0;font-weight:700}
+  .swim .floatband{position:absolute;top:0;bottom:0;background:repeating-linear-gradient(45deg,rgba(242,163,60,.16),rgba(242,163,60,.16) 5px,transparent 5px,transparent 11px);border-radius:2px}
+  .swim .floatband::after{content:"conditional float";position:absolute;bottom:2px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:7.5px;font-weight:700;letter-spacing:.03em;color:var(--warn);white-space:nowrap;text-transform:uppercase}
   .slane{position:relative;display:flex;align-items:center;gap:12px;z-index:1}
   .slane .slabel{flex:0 0 118px;width:118px;display:flex;align-items:center;justify-content:flex-end;gap:7px;text-align:right;font-size:11.5px;font-weight:800;color:#fff;line-height:1.1}
   .slane .slabel i{flex:0 0 auto;width:9px;height:9px;border-radius:3px}
@@ -614,7 +616,7 @@
       <div class="optrow r" style="--d:.2s">
         <div class="optmini rej"><div class="ot">Option A <span class="v r">Defers risk</span></div><h4>Keep LEC-iMX6</h4><p>No project now, but supply, capacity and security stay unaddressed.</p></div>
         <div class="optmini chosen"><div class="ot">Option B <span class="v">Chosen</span></div><h4>Upgrade to LEC-iMX95</h4><p>Stay in the SMARC family and aim to preserve the enclosure and interfaces; Hardware confirms at M1 what can be reused and what must change.</p></div>
-        <div class="optmini rej"><div class="ot">Option C <span class="v r">More rework</span></div><h4>Different vendor module</h4><p>New supplier qualification and BSP for little gain over staying in SMARC.</p></div>
+        <div class="optmini rej"><div class="ot">Option C <span class="v r">More rework</span></div><h4>Different vendor module</h4><p>Could also be a SMARC module; the extra work is module validation, a new BSP and supplier qualification, for little gain over B.</p></div>
         <div class="optmini rej"><div class="ot">Option D <span class="v r">Highest risk</span></div><h4>Full custom redesign</h4><p>Maximum optimization but the longest schedule, against the time-to-market priority.</p></div>
       </div>
 
@@ -627,6 +629,7 @@
             <li><span class="tk"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Port the app stack</b> to A55 / 64-bit and validate offline mode</span></li>
             <li><span class="tk"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Verify power and thermal margins</b> in the target enclosure</span></li>
             <li><span class="tk"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Verify IP67 early</b> on a representative enclosure assembly</span></li>
+            <li><span class="tk"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Confirm storage capacity at M1</b>: LEC-iMX95 order options list 32GB eMMC, so check available capacity against the database growth rate and data-retention period, since offline operation keeps all farm data on the device <a class="src" href="https://www.adlinktech.com/products/computer_on_modules/smarc/lec-imx95" target="_blank" rel="noopener">ADLINK LEC-iMX95</a></span></li>
           </ul>
         </div>
         <div class="delta">
@@ -663,7 +666,7 @@
           <tbody>
             <tr><td class="ms">A, Keep LEC-iMX6</td><td class="mo2">No project now</td><td class="md">Full reuse, no change</td><td class="md">Supply, capacity and security stay unaddressed; a later migration may be forced and rushed.</td></tr>
             <tr><td class="ms">B, Upgrade to LEC-iMX95<span class="pf2">Chosen</span></td><td class="mo2">~10 months (my estimate)</td><td class="md">Same SMARC form factor. Carrier and enclosure reuse assessed at M1. Early IP67 evidence reviewed by M2.</td><td class="md">Assumes enclosure reuse and at most one carrier design cycle; a second carrier spin adds ~6 to 8 weeks (my estimate).</td></tr>
-            <tr><td class="ms">C, Different vendor module</td><td class="mo2">~12 to 15 months (my estimate)</td><td class="md">Medium: new module, carrier rework, new supplier</td><td class="md">New supplier qualification and BSP relationship; more integration risk for little gain over B.</td></tr>
+            <tr><td class="ms">C, Different vendor module</td><td class="mo2">~12 to 15 months (my estimate)</td><td class="md">Medium: possibly still SMARC, but a new module, carrier rework and a new supplier</td><td class="md">Even a SMARC module from another vendor adds module validation, a new BSP and supplier qualification; more integration risk for little gain over B.</td></tr>
             <tr><td class="ms">D, Full custom redesign</td><td class="mo2">~18+ months (my estimate)</td><td class="md">Low: new carrier, possibly a new enclosure</td><td class="md">Longest schedule, highest technical and compliance risk and cost; conflicts with time-to-market.</td></tr>
           </tbody>
         </table>
@@ -705,6 +708,8 @@
             <div class="axis">
               <div class="gl" style="left:10%"><em>M1</em></div>
               <div class="gl key" style="left:45%"><em>M4.5 first integration</em></div>
+              <div class="floatband" style="left:75%;width:10%"></div>
+              <div class="gl key" style="left:75%"><em>M7.5</em></div>
               <div class="gl key" style="left:85%"><em>M8.5 pilot-ready</em></div>
             </div>
             <div class="slane">
@@ -730,7 +735,8 @@
                 <div class="seg it" style="left:8%;width:14%">Test plan + retest scope<span class="sm">M1</span></div>
                 <div class="seg it" style="left:45%;width:14%">Bench integration on EVT<span class="sm">M4.5 to M6</span></div>
                 <div class="seg it" style="left:60%;width:9%">In-enclosure verify<span class="sm">M6</span></div>
-                <div class="seg it" style="left:70%;width:12%">DVT<span class="sm">M7.5</span></div>
+                <div class="seg it" style="left:69%;width:6%">DVT<span class="sm">to M7.5</span></div>
+                <div class="seg it" style="left:75%;width:25%">Compliance reports + approvals<span class="sm">M7.5 to M10</span></div>
               </div>
             </div>
             <div class="slane">
@@ -745,7 +751,7 @@
           <div class="swimkey"><b>Reading the chart:</b> the pills at the top are the five delivery phases; the four coloured bars are the parallel workstreams, and an overlap means that work runs at the same time.</div>
         </div>
         <div class="salechain r" style="--d:.29s"><span class="sclabel">What makes it sellable</span><span class="sc">DVT<em>M7.5</em></span><span class="sc">Line ready<em>M8.5</em></span><span class="sc">PVT<em>M9.5</em></span><span class="sc">Compliance approvals</span><span class="sc go">Released for sale<em>M10</em></span></div>
-        <div class="assume r" style="--d:.3s"><span class="estlabel">My planning estimate</span>The pace is set by the carrier prototype at <b>M4.5</b> and in-enclosure verification at <b>M6</b>. From <b>DVT</b> at M7.5 there is about a month of float before the line is pilot-ready at <b>M8.5</b>, so a modest DVT slip is absorbed; a larger slip, or a second carrier spin, is what would move <b>M10</b>. The target assumes enclosure reuse and at most one carrier design cycle; a second spin adds roughly <b>6 to 8 weeks</b>, and if the enclosure must change the schedule updates with that scope.</div>
+        <div class="assume r" style="--d:.3s"><span class="estlabel">My planning estimate</span>The pace is set by the carrier prototype at <b>M4.5</b> and in-enclosure verification at <b>M6</b>. <b>DVT</b> closes at M7.5 while line preparation runs alongside it, so the month to a pilot-ready line at <b>M8.5</b> is a conditional float: it absorbs a modest DVT slip, but shrinks if DVT findings force a change to a fixture, the BOM or a compliance test. A larger slip, or a second carrier spin, is what would move <b>M10</b>. The target assumes enclosure reuse and at most one carrier design cycle; a second spin adds roughly <b>6 to 8 weeks</b>, and if the enclosure must change the schedule updates with that scope.</div>
       </div>
       <details class="study r" style="--d:.32s">
         <summary>How I would validate the 10-month assumption</summary>
@@ -767,7 +773,7 @@
           </thead>
           <tbody>
             <tr><td class="mn">M0</td><td class="ms">Kickoff and release scope agreed</td><td class="ph2"><span class="pdot" style="background:#1BC9B6"></span>Define</td><td class="mo2">~M0</td><td class="md">The release scope is agreed. From here software starts on the evaluation kit and hardware starts the compatibility review, in parallel.</td></tr>
-            <tr><td class="mn">01</td><td class="ms">Hardware changes agreed<span class="pf2">Decided</span></td><td class="ph2"><span class="pdot" style="background:#1BC9B6"></span>Define</td><td class="mo2">~M1</td><td class="md">Decided what to keep and what to change on the board and enclosure, after checking the pins in use, voltage, power and mechanical fit. Engineering and Compliance set the initial retest scope from the expected changes. Procurement confirms the production SOM part number, lead time and BSP version, and QA books the compliance lab slots, so the build and release dates rest on confirmed availability rather than an assumption.</td></tr>
+            <tr><td class="mn">01</td><td class="ms">Hardware changes agreed<span class="pf2">Decided</span></td><td class="ph2"><span class="pdot" style="background:#1BC9B6"></span>Define</td><td class="mo2">~M1</td><td class="md">Decided what to keep and what to change on the board and enclosure, after checking the pins in use, voltage, power and mechanical fit. Engineering and Compliance set the initial retest scope from the expected changes. Procurement confirms the production SOM part number, lead time and BSP version, and QA books the compliance lab slots, so the build and release dates rest on confirmed availability rather than an assumption. We also confirm the eMMC capacity of the chosen module against the database growth rate and retention period, since offline operation keeps all farm data on the device.</td></tr>
             <tr><td class="mn">02</td><td class="ms">Early IP67 evidence reviewed</td><td class="ph2"><span class="pdot" style="background:#00A89A"></span>Design</td><td class="mo2">~M2</td><td class="md">The early-test results, or approved existing evidence, are documented against the configuration that was checked. Any remaining gap is stated explicitly and carried to DVT. The title says "evidence reviewed", not "IP67 approved": final coverage is confirmed at DVT.</td></tr>
             <tr><td class="mn">03</td><td class="ms">Application stack runs on evaluation kit</td><td class="ph2"><span class="pdot" style="background:#00857C"></span>Develop</td><td class="mo2">~M3</td><td class="md">The server, database and web interface run together on the i.MX95 kit, the first point where the full stack is shown working.</td></tr>
             <tr><td class="mn">04</td><td class="ms">First offline event on EVT hardware<span class="pf2">Demonstrated</span></td><td class="ph2"><span class="pdot" style="background:#00857C"></span>Develop</td><td class="mo2">~M4.5</td><td class="md">On MSD's prototype, with the internet disconnected, one sensor event is captured, stored in the database and shown in the local interface. The hardware and software tracks meet here for the first time.</td></tr>
