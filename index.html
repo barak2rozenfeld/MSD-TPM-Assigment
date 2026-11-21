@@ -248,6 +248,14 @@
   .startflag::after{content:"";position:absolute;left:50%;bottom:100%;transform:translateX(-50%);border:5px solid transparent;border-bottom-color:var(--teal-bright)}
   .swimkey{margin-top:13px;font-size:10.5px;color:var(--muted);line-height:1.45}
   .swimkey b{color:#CFF6F0;font-weight:800}
+  .salechain{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-top:14px;padding:9px 13px;border:1px solid rgba(62,124,177,.32);border-radius:12px;background:linear-gradient(180deg,rgba(62,124,177,.1),var(--card))}
+  .salechain .sclabel{font-size:8.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:#9fc4e0;margin-right:5px}
+  .salechain .sc{position:relative;display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;color:#CFF6F0;background:rgba(62,124,177,.16);border:1px solid rgba(62,124,177,.42);border-radius:999px;padding:4px 11px}
+  .salechain .sc em{font-family:var(--mono);font-style:normal;font-size:9px;color:#9fc4e0;letter-spacing:.02em}
+  .salechain .sc+.sc{margin-left:15px}
+  .salechain .sc+.sc::before{content:"";position:absolute;left:-13px;top:50%;width:6px;height:6px;border-top:2px solid rgba(62,124,177,.75);border-right:2px solid rgba(62,124,177,.75);transform:translateY(-50%) rotate(45deg)}
+  .salechain .sc.go{background:rgba(242,163,60,.16);border-color:rgba(242,163,60,.5);color:#fff}
+  .salechain .sc.go em{color:var(--warn)}
 
   /* ---------- watermark logo bottom-left on content slides ---------- */
   .wm{position:fixed;bottom:22px;left:28px;z-index:20;opacity:.5;display:flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
@@ -432,6 +440,8 @@
     .slane .strack{height:auto;background:none;border:none;display:flex;flex-direction:column;gap:6px}
     .seg{position:static;left:auto !important;width:auto !important;top:auto;bottom:auto;white-space:normal;padding:8px 11px;font-size:11.5px;justify-content:space-between}
     .seg .sm{display:inline;font-family:var(--mono);font-size:10px;font-weight:700;color:rgba(255,255,255,.9);background:rgba(0,0,0,.22);padding:2px 7px;border-radius:999px;margin-left:8px;flex:0 0 auto}
+    .salechain .sc+.sc{margin-left:0}
+    .salechain .sc+.sc::before{display:none}
 
     /* ---- mobile WOW polish ---- */
     html{scroll-behavior:smooth}
@@ -595,7 +605,7 @@
         <h2 class="r" style="--d:.08s">Minimum change to run today's product on <span class="grad">i.MX95</span></h2>
       </div>
 
-      <div class="r" style="--d:.12s;font-size:13.5px;color:var(--muted);margin-top:4px">I weighed four approaches against MSD's time-to-market priority. <b style="color:#fff">My choice: upgrade within the SMARC family to the i.MX95</b>, preserving the product's interfaces and farm behaviour and changing only what the new module requires. At M1 Hardware decides what can be reused and what must change. <span class="src nolink">Scope: MSD brief</span></div>
+      <div class="r" style="--d:.12s;font-size:13.5px;color:var(--muted);margin-top:4px">MSD has already set the <b style="color:#fff">LEC-iMX95</b> as the planned base, so the real decision this task asks for is <b style="color:#fff">which parts of the carrier and enclosure can be reused and what must be adapted</b>. I keep the change minimal, preserving the product's interfaces and farm behaviour, and at M1 Hardware confirms the reuse set. The four approaches below give context; their 12 to 15 and 18+ month figures are rough comparisons, not the focus. <span class="src nolink">Scope: MSD brief</span></div>
 
       <div class="optrow r" style="--d:.2s">
         <div class="optmini rej"><div class="ot">Option A <span class="v r">Defers risk</span></div><h4>Keep LEC-iMX6</h4><p>No project now, but supply, capacity and security stay unaddressed.</p></div>
@@ -608,7 +618,7 @@
         <div class="delta">
           <div class="dlabel">Chosen approach, R&amp;D delta</div>
           <ul class="ticks">
-            <li><span class="tk"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Verify carrier compatibility</b> and redesign only the affected circuits</span></li>
+            <li><span class="tk"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Carrier compatibility review (M1 output)</b>: the exact module part numbers, the pin and interface mapping this product uses, and a power and thermal estimate in the existing enclosure, so we redesign only the affected circuits</span></li>
             <li><span class="tk"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>BSP / Yocto bring-up</b> and migration of the drivers this product actually uses (Ethernet, storage, USB and the sensor interfaces)</span></li>
             <li><span class="tk"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Port the app stack</b> to A55 / 64-bit and validate offline mode</span></li>
             <li><span class="tk"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><b>Verify power and thermal margins</b> in the target enclosure</span></li>
@@ -631,6 +641,7 @@
         <summary>Why I scope it this way</summary>
         <div class="study-body">
           <p><b>Verify, then redesign.</b> Committing to a full carrier re-spin before checking pin mapping, power and thermal compatibility risks redesigning circuits that did not need to change. I size the carrier work only after the compatibility review, so the schedule reflects the real change set rather than a worst case.</p>
+          <p><b>Why the pin mapping is not a formality.</b> The current LEC-iMX6 is documented as SMARC 1.1, while the LEC-iMX95 listing shows SMARC 2.x. The 2.x pin definition differs from 1.x, so individual carrier signals can move even though the module form factor is unchanged. That is exactly why the M1 review maps the pins and interfaces this product actually uses before any redesign is scoped, rather than assuming a drop-in replacement. <a class="src" href="https://www.adlinktech.com/products/computer_on_modules/smarc/lec-imx95" target="_blank" rel="noopener">ADLINK LEC-iMX95</a></p>
           <p><b>Why compare against two references.</b> Comparing the new unit only to the existing device can hide a fault that both share. Comparing it to a known expected outcome as well catches a defect that is common to both generations, so the offline replay proves correctness, not just that the two behave the same.</p>
           <p><b>Field replacement is an M0 decision.</b> The replay proves the new server processes and displays events correctly, but it does not settle whether a new unit also has to replace a server already running on a farm with accumulated data. We decide this at M0. At M6, the device must meet the agreed event ingestion rate and web app response time. If field replacement is in scope, also verify backup and restore of the database history and farm settings.</p>
           <p><b>IP67, verified early.</b> Already at M1, Mechanical and QA check whether the seals, connectors, openings or the way the lid closes have changed. The aim is to verify sealing by M2, or earlier if a representative enclosure assembly is available, and this runs in parallel with carrier and software development.</p>
@@ -729,7 +740,8 @@
           </div>
           <div class="swimkey"><b>Reading the chart:</b> the pills at the top are the five delivery phases; the four coloured bars are the parallel workstreams, and an overlap means that work runs at the same time.</div>
         </div>
-        <div class="assume r" style="--d:.3s"><span class="estlabel">My planning estimate</span>The release date is paced by one dependency chain: carrier prototype at <b>M4.5</b>, in-enclosure offline verification at <b>M6</b> and <b>DVT</b> at M7.5; a slip on any of these, or a second carrier spin, is what moves <b>M10</b>. The target assumes enclosure reuse and at most one carrier design cycle. A second carrier spin would add roughly <b>6 to 8 weeks</b>. If the enclosure must change, the schedule updates with the scope of that change.</div>
+        <div class="salechain r" style="--d:.29s"><span class="sclabel">What makes it sellable</span><span class="sc">DVT<em>M7.5</em></span><span class="sc">Line ready<em>M8.5</em></span><span class="sc">PVT<em>M9.5</em></span><span class="sc">Compliance approvals</span><span class="sc go">Released for sale<em>M10</em></span></div>
+        <div class="assume r" style="--d:.3s"><span class="estlabel">My planning estimate</span>The pace is set by the carrier prototype at <b>M4.5</b> and in-enclosure verification at <b>M6</b>. From <b>DVT</b> at M7.5 there is about a month of float before the line is pilot-ready at <b>M8.5</b>, so a modest DVT slip is absorbed; a larger slip, or a second carrier spin, is what would move <b>M10</b>. The target assumes enclosure reuse and at most one carrier design cycle; a second spin adds roughly <b>6 to 8 weeks</b>, and if the enclosure must change the schedule updates with that scope.</div>
       </div>
       <details class="study r" style="--d:.32s">
         <summary>How I would validate the 10-month assumption</summary>
@@ -809,7 +821,11 @@
     el.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();fn();}};
   });
   document.addEventListener('keydown',e=>{
-    if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();next();}
+    const sel='[role="button"],summary,a,button,input,textarea,select';
+    const t=e.target, ae=document.activeElement;
+    const onControl=(t&&t.matches&&t.matches(sel))||(ae&&ae.matches&&ae.matches(sel));
+    if(e.key===' '){if(onControl)return;e.preventDefault();next();return;}
+    if(['ArrowRight','PageDown'].includes(e.key)){e.preventDefault();next();}
     if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();prev();}
     if(e.key==='Home')go(0); if(e.key==='End')go(slides.length-1);
     if(e.key==='f'||e.key==='F'){toggleFs();}
