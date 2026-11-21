@@ -243,6 +243,12 @@
   .seg.sw{background:linear-gradient(90deg,#00A89A,#00857C)}
   .seg.it{background:linear-gradient(90deg,#4f93cc,#3E7CB1)}
   .seg.npi{background:linear-gradient(90deg,#9b86d4,#8E7CC3)}
+  .seg .ti{display:inline-flex;align-items:center;justify-content:center;width:13px;height:13px;border-radius:50%;background:rgba(255,255,255,.28);font-size:8px;font-weight:800;font-style:italic;flex:0 0 auto;margin-left:1px}
+  .seg.tip{overflow:visible;cursor:help}
+  .seg.tip:hover,.seg.tip:focus-visible{outline:none}
+  .seg.tip::after{content:attr(data-tip);position:absolute;left:0;bottom:calc(100% + 12px);width:260px;max-width:72vw;background:var(--navy);color:#dff7f3;border:1px solid var(--teal-bright);border-radius:10px;padding:9px 11px;font-size:10.5px;font-weight:600;line-height:1.45;white-space:normal;text-align:left;box-shadow:0 12px 32px rgba(0,0,0,.55);opacity:0;transform:translateY(5px);pointer-events:none;transition:.18s;z-index:60}
+  .seg.tip::before{content:"";position:absolute;left:20px;bottom:calc(100% + 6px);border:6px solid transparent;border-top-color:var(--teal-bright);opacity:0;transition:.18s;z-index:60}
+  .seg.tip:hover::after,.seg.tip:focus-visible::after,.seg.tip:hover::before,.seg.tip:focus-visible::before{opacity:1;transform:translateY(0)}
   /* slide-4 start-here marker on M0 + swim-lane colour key */
   .node.start .pt{animation:startpulse 2s ease-in-out infinite}
   @keyframes startpulse{0%,100%{box-shadow:0 0 0 4px rgba(7,19,38,.9),0 0 0 7px rgba(27,201,182,.18)}50%{box-shadow:0 0 0 4px rgba(7,19,38,.9),0 0 0 12px rgba(27,201,182,.45)}}
@@ -714,6 +720,7 @@
             <div class="axis">
               <div class="gl" style="left:10%"><em>M1</em></div>
               <div class="gl key" style="left:45%"><em>M4.5 first integration</em></div>
+              <div class="gl key" style="left:60%"><em>M6 verified</em></div>
               <div class="floatband" style="left:75%;width:10%"></div>
               <div class="gl key" style="left:75%"><em>M7.5</em></div>
               <div class="gl key" style="left:85%"><em>M8.5 pilot-ready</em></div>
@@ -722,7 +729,7 @@
               <div class="slabel"><i style="background:#1BC9B6"></i>Hardware</div>
               <div class="strack">
                 <div class="seg hw" style="left:1%;width:9%">Compatibility review<span class="sm">M0 to M1</span></div>
-                <div class="seg hw" style="left:11%;width:34%">Carrier design + prototype<span class="sm">M1 to M4.5</span></div>
+                <div class="seg hw tip" tabindex="0" role="note" data-tip="If the existing carrier passes the compatibility review, we can bring integration forward. If changes are required, M4.5 remains the prototype target." style="left:11%;width:34%">Carrier design + prototype<span class="sm">M1 to M4.5</span><span class="ti">i</span></div>
                 <div class="seg hw" style="left:46%;width:28%">EVT fixes and DVT preparation<span class="sm">M4.5 to M7.5</span></div>
               </div>
             </div>
@@ -739,8 +746,7 @@
               <div class="slabel"><i style="background:#3E7CB1"></i>Integration &amp; QA</div>
               <div class="strack">
                 <div class="seg it" style="left:8%;width:14%">Test plan + retest scope<span class="sm">M1</span></div>
-                <div class="seg it" style="left:45%;width:14%">Bench integration on EVT<span class="sm">M4.5 to M6</span></div>
-                <div class="seg it" style="left:60%;width:9%">In-enclosure verify<span class="sm">M6</span></div>
+                <div class="seg it" style="left:45%;width:15%">Integration + in-enclosure verify<span class="sm">M4.5 to M6</span></div>
                 <div class="seg it" style="left:69%;width:6%">DVT<span class="sm">to M7.5</span></div>
                 <div class="seg it" style="left:75%;width:25%">Compliance reports + approvals<span class="sm">M7.5 to M10</span></div>
               </div>
@@ -757,7 +763,7 @@
           <div class="swimkey"><b>Reading the chart:</b> the pills at the top are the five delivery phases; the four coloured bars are the parallel workstreams, and an overlap means that work runs at the same time.</div>
         </div>
         <div class="salechain r" style="--d:.29s"><span class="sclabel">What makes it sellable</span><span class="sc">DVT<em>M7.5</em></span><span class="sc">Line ready<em>M8.5</em></span><span class="sc">PVT<em>M9.5</em></span><span class="sc">Compliance approvals</span><span class="sc go">Released for sale<em>M10</em></span></div>
-        <div class="assume r" style="--d:.3s"><span class="estlabel">My planning estimate</span>The pace is set by the carrier prototype at <b>M4.5</b> and in-enclosure verification at <b>M6</b>. <b>DVT</b> closes at M7.5 while line preparation runs alongside it, so the month to a pilot-ready line at <b>M8.5</b> is a conditional float: it absorbs a modest DVT slip, but shrinks if DVT findings force a change to a fixture, the BOM or a compliance test. A larger slip, or a second carrier spin, is what would move <b>M10</b>. The target assumes enclosure reuse and at most one carrier design cycle; a second spin adds roughly <b>6 to 8 weeks</b>, and if the enclosure must change the schedule updates with that scope.</div>
+        <div class="assume r" style="--d:.3s"><span class="estlabel">My planning estimate</span>The pace is set by the carrier prototype at <b>M4.5</b> and in-enclosure verification at <b>M6</b>. <b>DVT</b> closes at M7.5 while line preparation runs alongside it, so the month to a pilot-ready line at <b>M8.5</b> is a conditional float: it absorbs a modest DVT slip, but shrinks if DVT findings force a change to a fixture, the BOM or a compliance test. Release needs both a passed pilot and completed compliance approvals, and because the approval track runs to M10, a DVT slip that pushes the approvals can still move the sale date even when the float absorbed the pilot start. A larger slip, or a second carrier spin, is what would move <b>M10</b>. The target assumes enclosure reuse and at most one carrier design cycle; a second spin adds roughly <b>6 to 8 weeks</b>, and if the enclosure must change the schedule updates with that scope.</div>
       </div>
       <details class="study r" style="--d:.32s">
         <summary>9-milestone detail: what each milestone proves</summary>
@@ -864,7 +870,7 @@
     el.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();fn();}};
   });
   document.addEventListener('keydown',e=>{
-    const sel='[role="button"],summary,a,button,input,textarea,select';
+    const sel='[role="button"],summary,a,button,input,textarea,select,[data-tip]';
     const t=e.target, ae=document.activeElement;
     const onControl=(t&&t.matches&&t.matches(sel))||(ae&&ae.matches&&ae.matches(sel));
     if(e.key===' '){if(onControl)return;e.preventDefault();next();return;}
