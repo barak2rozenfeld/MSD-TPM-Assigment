@@ -754,17 +754,6 @@
         <div class="assume r" style="--d:.3s"><span class="estlabel">My planning estimate</span>The pace is set by the carrier prototype at <b>M4.5</b> and in-enclosure verification at <b>M6</b>. <b>DVT</b> closes at M7.5 while line preparation runs alongside it, so the month to a pilot-ready line at <b>M8.5</b> is a conditional float: it absorbs a modest DVT slip, but shrinks if DVT findings force a change to a fixture, the BOM or a compliance test. A larger slip, or a second carrier spin, is what would move <b>M10</b>. The target assumes enclosure reuse and at most one carrier design cycle; a second spin adds roughly <b>6 to 8 weeks</b>, and if the enclosure must change the schedule updates with that scope.</div>
       </div>
       <details class="study r" style="--d:.32s">
-        <summary>How I would validate the 10-month assumption</summary>
-        <div class="study-body">
-          <p><b>Activities leading to M4.5.</b> Carrier design, prototype build and BSP bring-up all run between M1 and M4.5 on the hardware track, in parallel with software on the evaluation kit. They are the work behind the first offline event, not separate milestones.</p>
-          <p><b>How the four tracks overlap.</b> Hardware runs the compatibility review from kickoff to M1, then carrier design and the prototype up to M4.5, then EVT fixes and DVT preparation, with a further carrier spin only if the EVT findings require it, which would add roughly 6 to 8 weeks. Software brings the app stack up on the evaluation kit from M0, runs offline tests there, and after the first integration at M4.5 continues testing on the EVT prototype. Integration and QA are not left to the end: the test plan and retest scope are set at M1, the first bench integration is at M4.5, and DVT follows. NPI starts at M1 too, with supplier and BOM setup, then fixtures, eMMC flashing and assembly preparation, so the line is pilot-ready at M8.5 without waiting for DVT to finish. The swim-lane chart on the slide shows each of these segments against the milestones.</p>
-          <p><b>Who validates it.</b> Hardware owns the carrier compatibility review; Mechanical and QA own the early IP67 check; Engineering and Compliance own the EMC, safety and IP67 retest scope; Procurement owns the module lifecycle and lead-time check. The planning number stays mine as a target, not a commitment.</p>
-          <p><b>When.</b> At M1 we agree the hardware changes and initial retest scope. By M2 we review early IP67 evidence and record any gaps. At DVT we confirm coverage of the final configuration.</p>
-          <p><b>What triggers a schedule revision.</b> A needed second carrier design cycle adds roughly 6 to 8 weeks. If the enclosure must change, the schedule updates with the scope of that change.</p>
-          <p><b>Release gate.</b> The M10 release is not a date, it is a decision. QA and Operations hold a Go/No-Go for the exact configuration that can be sold, and they sign it off against named inputs: the DVT results, the relevant compliance approvals, the PVT results, the released BOM and the approved software version. If any input is open, the item either closes before release or the release scope is narrowed to what is actually approved.</p>
-        </div>
-      </details>
-      <details class="study r" style="--d:.34s">
         <summary>9-milestone detail: what each milestone proves</summary>
         <div class="mwrap">
         <table class="mtable">
@@ -784,6 +773,14 @@
             <tr><td class="mn">09</td><td class="ms">Released for sale</td><td class="ph2"><span class="pdot" style="background:#8E7CC3"></span>Launch</td><td class="mo2">~M10</td><td class="md">QA and Operations make the Go/No-Go for the sellable configuration, based on the DVT results, the relevant compliance approvals, the PVT results, the released BOM and the approved software version. On a Go, product and manufacturing documents are released and the product is ready to ship.</td></tr>
           </tbody>
         </table>
+        </div>
+      </details>
+      <details class="study r" style="--d:.34s">
+        <summary>How I arrived at the 10-month estimate</summary>
+        <div class="study-body">
+          <p><b>Built from parallel tracks, not a sum of steps.</b> I did not add the phases end to end. Hardware, software, integration and NPI run at the same time, so the duration is set by the critical path: carrier prototype at M4.5, in-enclosure verification at M6, DVT at M7.5, a pilot-ready line at M8.5 and release at M10. The swim-lane chart above shows where the tracks overlap.</p>
+          <p><b>What it assumes.</b> Enclosure reuse and at most one carrier design cycle. A second carrier spin adds roughly 6 to 8 weeks, and if the enclosure must change the schedule updates with the scope of that change.</p>
+          <p><b>Still a target, not a commitment.</b> The real numbers come from the owners I would validate with: Hardware on the carrier compatibility review, Mechanical and QA on early IP67, Engineering and Compliance on the retest scope, and Procurement on module lifecycle and lead time.</p>
         </div>
       </details>
     </section>
