@@ -458,6 +458,10 @@
     .arrow{box-shadow:0 8px 22px rgba(0,0,0,.45)}
     .nav{bottom:14px}
     .nav::before{content:"";position:fixed;left:0;right:0;bottom:0;height:98px;background:linear-gradient(to top,rgba(4,13,25,.96) 22%,rgba(4,13,25,0));z-index:-1;pointer-events:none}
+    /* larger touch targets for the dots: 24px hit area, 10px visual */
+    .dots{gap:2px}
+    .dot{width:24px;height:24px;border:7px solid transparent;background-clip:content-box;box-sizing:border-box}
+    .dot.on{width:44px}
   }
   @media (max-width:430px){
     h1{font-size:30px}
