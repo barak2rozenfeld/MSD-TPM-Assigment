@@ -487,6 +487,36 @@
   }
 
   /* ================= PRINT / PDF ================= */
+  /* ================= WOW polish ================= */
+  /* light sheen travelling across gradient headlines */
+  .grad{background-size:220% auto;animation:gradsheen 9s ease-in-out infinite}
+  @keyframes gradsheen{0%,100%{background-position:0% center}50%{background-position:100% center}}
+  /* slide-1 device: gentle float and a glow that breathes with it */
+  #s1 .device{animation:devfloat 7.5s ease-in-out infinite;transition:box-shadow .5s ease}
+  #s1 .device:hover{box-shadow:0 34px 90px rgba(0,0,0,.55),0 0 0 1px rgba(27,201,182,.4)}
+  @keyframes devfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+  .device-glow{animation:glowbreathe 7.5s ease-in-out infinite}
+  @keyframes glowbreathe{0%,100%{opacity:.7;transform:scale(1)}50%{opacity:1;transform:scale(1.07)}}
+  /* slide-2 reason cards: lift, deepen shadow, light the accent bar, nudge the icon */
+  .reasons .rc{transition:opacity .6s ease, transform .4s cubic-bezier(.2,.7,.2,1), box-shadow .4s ease, border-color .4s ease}
+  .reasons .rc:hover{transform:translateY(-7px);box-shadow:0 26px 60px rgba(0,0,0,.5),0 0 0 1px rgba(27,201,182,.35);border-color:rgba(27,201,182,.5)}
+  .reasons .rc::before{transition:box-shadow .4s ease,height .3s ease}
+  .reasons .rc:hover::before{height:4px;box-shadow:0 0 18px rgba(27,201,182,.9)}
+  .reasons .rc .ic{transition:transform .4s cubic-bezier(.3,1.4,.5,1),background .4s ease}
+  .reasons .rc:hover .ic{transform:scale(1.08) rotate(-3deg);background:rgba(27,201,182,.22)}
+  .reasons .rc.future:hover{box-shadow:0 26px 60px rgba(0,0,0,.5),0 0 0 1px rgba(242,163,60,.4);border-color:rgba(242,163,60,.55)}
+  .reasons .rc.future:hover::before{box-shadow:0 0 18px rgba(242,163,60,.9)}
+  .reasons .rc.future:hover .ic{background:rgba(242,163,60,.22)}
+  /* slide-3 option cards: subtle lift */
+  .optrow .optmini{transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s ease,border-color .35s ease}
+  .optrow .optmini:hover{transform:translateY(-5px);box-shadow:0 20px 44px rgba(0,0,0,.45)}
+  .optrow .optmini.chosen:hover{box-shadow:0 0 0 1px rgba(27,201,182,.45),0 22px 50px rgba(0,0,0,.5)}
+  /* glance chips and nav arrows: small, responsive micro-interactions */
+  .glance .gchip{transition:transform .25s ease,box-shadow .25s ease}
+  .glance .gchip:hover{transform:translateY(-2px)}
+  .glance .gchip.hi:hover{box-shadow:0 6px 18px rgba(27,201,182,.45)}
+  .arrow:hover{transform:translateY(-2px) scale(1.06)}
+
   /* ---- accessibility: keyboard focus + reduced motion ---- */
   .arrow:focus-visible,.dot:focus-visible,.study>summary:focus-visible,a.src:focus-visible,.gchip:focus-visible{outline:2px solid var(--teal-bright);outline-offset:3px;border-radius:10px}
   @media (prefers-reduced-motion: reduce){
